@@ -1,11 +1,13 @@
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Creation_of_My_Own_Emoji&fontSize=60" />
-  <p>고나연 (2018156001)</p>
-  <p>김원빈 (2020158044)</p>
-  <p>박보현 (2017156014)</p>
-  <p>정한철 (2020158046)[팀장]</p>
-</div>
-<hr>
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=260&section=header&text=Create%20of%20My%20Own%20Emoji&fontSize=55&animation=fadeIn&fontAlignY=38&desc=나만의%20이모티콘%20생성&descAlignY=51&descAlign=65)
+
+## 👥 Member 👥
+<h4>👧 고나연 (2018156001)</h4>
+<h4>🧑 김원빈 (2020158044)</h4>
+<h4>🧑 박보현 (2017156014)</h4>
+<h4>🤴 정한철 (2020158046) [팀장]</h4>
+<br>
+
+## 💻️ Tech Stack 🖥️
 <div align="center">
   <div align="center">
     <h4>Platforms & Languages</h4>
@@ -30,4 +32,6 @@
   <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white" />
   <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" />
 </div>
-<hr>
+
+<br><br><br><br>
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
