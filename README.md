@@ -2,10 +2,27 @@
 
 ## 👥 Member 👥
 <h4>👧 고나연 (2018156001)</h4>
+<a href="https://github.com/ssedogdoom">
+    <img src="http://img.shields.io/badge/ssedogdoom-gray?logo=github"/>
+</a>
+
 <h4>🧑 김원빈 (2020158044)</h4>
-<h4>🧑 박보현 (2017156014)</h4>
+<a href="https://github.com/diffngood">
+    <img src="http://img.shields.io/badge/diffngood-gray?logo=github"/>
+</a>
+
+<h4>🧑 박보현 (2017156014)
+</h4>
+<a href="https://github.com/bohyun5904">
+  <img src="http://img.shields.io/badge/bohyun5904-gray?logo=github"/>
+</a>
+
 <h4>🤴 정한철 (2020158046) [팀장]</h4>
+<a href="https://github.com/HancheolJeong">
+    <img src="http://img.shields.io/badge/HancheolJeong-gray?logo=github"/>
+</a>
 <br>
+
 
 ## 💻️ Tech Stack 🖥️
 <div align="center">
@@ -33,5 +50,19 @@
   <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" />
 </div>
 
-<br><br><br><br>
+<details>
+  <summary><h4>DB 설계</h4></summary>
+  
+  DB 설계 추가예정
+</details>
+
+<br>
+
+<details>
+  <summary><h4>웹(스토리보드)</h4></summary>
+  
+  웹 스토리보드 추가예정
+</details>
+
+<br><br><br>
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
