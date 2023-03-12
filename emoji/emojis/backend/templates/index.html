@@ -1,0 +1,17 @@
+<table class="table-contents" style="padding: 10px;">
+    <tr>
+        <th>아이디</th>
+        <th>이름</th>
+        <th>이메일</th>
+        <th>비밀번호</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+    </tr>
+    {% endfor %}
+
+</table>

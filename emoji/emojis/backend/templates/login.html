@@ -1,0 +1,28 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block content %}
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <div class='wrap'>
+        <div class='login_wrap'>
+            <h2 class='login_title'>LOGIN</h2>
+            <form class='login_form'>
+                <input type="nameInput" name="name">
+                <input type="password" name="pw">
+                <button class='login_btn' type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}
