@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 
+# User DB (Mysql)
 class User(models.Model):
     id = models.CharField(primary_key=True, max_length=20)
     name = models.CharField(null=False, max_length=20)

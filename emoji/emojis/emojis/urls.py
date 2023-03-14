@@ -21,9 +21,11 @@ from backend import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', views.home, name='home'),
-    path('login/', views.login),
-    path('signup/', views.signup),
-    path('emo_create/', views.emo_create),
-    path('chat/', views.chat),
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('emo_create/', views.emo_create, name='emo_create'),
+    path('emo_board/', views.emo_board, name='emo_board'),
+    path('chat/', views.chat, name='chat'),
+    path('my_emo/', views.my_emo, name='my_emo'),
     path('user/', views.user_view),
 ]

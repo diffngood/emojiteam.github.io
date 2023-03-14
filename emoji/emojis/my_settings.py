@@ -5,11 +5,13 @@ DATABASES = {
         # 2. 연동할 MySQL의 데이터베이스 이름
         'NAME': 'emojis_db',
         # 3. DB 접속 계정명  / 연결할 db에 따라 다를 수 있음
-        'USER': 'kwbin',
+        # 'USER': 'kwbin',
+        'USER': 'kwb',
         # 4. DB 패스워드
         'PASSWORD': '0000',
         # 5. DB 주소 / 연결할 db에 따라 다를 수 있음
-        'HOST': '192.168.219.102',
+        # 'HOST': '192.168.219.103',
+        'HOST': 'localhost',
         # 6. 포트번호
         'PORT': '3306',
     }
