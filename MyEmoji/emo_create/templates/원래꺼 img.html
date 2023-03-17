@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload Image</button>
+</form>
+
+{% if form.instance.image %}
+이미지
+<img src="{{ form.instance.image.url }}" alt="{{ form.instance.image.name }}">
+{% endif %}
+
+{% endblock %}

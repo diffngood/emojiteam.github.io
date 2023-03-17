@@ -1,0 +1,14 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h4>DB_Num: {{img.pk}}</h4>
+    <h3>이미지 생성일 - {{img.date}}</h3><br>
+    {% if img.image %}
+    <h5>이미지 상대경로: {{img.image.url}}</h5><br>
+    <h5>이미지 절대경로: {{img.image.path}}></h5><br>
+    <img src="{{ img.image.url }}" style="height: 400px;">
+    <br>
+    {% endif %}
+</div>
+{% endblock %}

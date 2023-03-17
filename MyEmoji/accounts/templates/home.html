@@ -1,0 +1,38 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class='banner'>
+        <div class='banner-info'>
+            <h1>쉽고 다양하고 완벽하게,<br>나만의 이모티콘을 생성해 보세요</h1><br>
+            <button type="button" class="create_btn" onClick="location.href='emo_create'">이모티콘 생성하러 가기</button>
+        </div>
+    </div>
+    <div class="container">
+        내용 추가
+    </div>
+</body>
+{% endblock %}
+
+
+
+<!-- <div style="text-align: center;">
+    <h1>사용자의 이름을 입력해주세요.</h1>
+    <br>
+    <form action="hello">
+        <label for="nameInput">이름 : </label>
+        <input type="nameInput" name="name">
+        <input type="submit" value="제출">
+    </form>
+</div> -->

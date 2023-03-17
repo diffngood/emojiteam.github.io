@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
+</head>
+
+
+<body>
+    <!-- 네비게이션바 -->
+    <nav id="nav">
+        <a href="/">logo</a>
+        <ul class="main_nav_bar">
+            <li><a href="/emo_create" class='item item1'>이모티콘 제작</a></li>
+            <li><a href="/emo_board" class='item item2'>이모티콘 공유</a></li>
+            <li><a href="/chat" class='item item3'>채팅</a></li>
+            <li><a href="/my_emo" class='mysetting_item mystudio'>My Emoticon</a>
+        </ul>
+
+        <ul class="sub_nav_bar">
+            <li><a href="/" class='item item3'>홈</a></li>
+            <li><a href="/login" class='item item1'>로그인</a></li>
+            <li><a href="/signup" class='item item2'>회원가입</a></li>
+        </ul>
+    </nav>
+    <!-- <h3><a href="logout">로그아웃</a></h3> -->
+
+    <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+    {% block content %}
+    {% endblock %}
+    <!-- 기본 템플릿 안에 삽입될 내용 End -->
+</body>
+
+</html>
