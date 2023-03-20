@@ -1,9 +1,42 @@
 {% extends 'navbar.html' %}
 {% load static %}
 {% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
+    <link rel="stylesheet" href="{% static 'css/guide.css' %}">
+    <title>Detail</title>
+</head>
 <div>
-    Guide 페이지
-    <br>
-    <a href="upload_img/">IMAGE 업로드</a>
+    <section class="CreateEmotioconBanner">
+        <h1 class="CreateEmotioconBanner_text">
+            이 모 티 콘 제 작
+            <br />
+            &nbsp;&nbsp;&nbsp;(Banner)
+        </h1>
+    </section>
+    <div class="container">
+        <section class="wrapper">
+            <div class="sidebar">
+                <nav class="mainMenu">
+                    <ul>
+                        <li><a href="">Guide</a></li>
+                        <li><a href="upload_img/">Upload a picture</a></li>
+                        <li><a href="webcam/">WebCam</a></li>
+                    </ul>
+                </nav>
+                <div class="writeBtnBox">
+                    <button class="writeBtn">생성된 이모티콘<span class="arrow">▶</span></button>
+                </div>
+            </div>
+            <div class="CreateWrap">
+                <br /><br /><br /><br />
+                <h1 className='guide_text'>Guide 설명</h1>
+            </div>
+        </section>
+    </div>
 </div>
 {% endblock %}

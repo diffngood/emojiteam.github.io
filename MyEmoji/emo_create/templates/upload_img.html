@@ -1,14 +1,37 @@
 {% extends 'navbar.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        업로드 :
-        <input name="image" type="file">
-        <br><br>
 
-        <input class="btn btn-primary" type="submit" value="이미지 서버 전송">
-    </form>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
+    <link rel="stylesheet" href="{% static 'css/upload_img.css' %}">
+    <title>Upload_img</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="upload_box">
+            {% if not img.image %}
+            <p class="message">Files to upload</p>
+            {% endif %}
+
+            {% if img.image %}
+            <img src="{{ img.image.url }}" style="height: 400px;">
+            {% endif %}
+        </div>
+        <br>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="filebox">
+                <label for="image_file">업로드</label>
+                <input id="image_file" name="image" type="file">
+                <input class="submit_btn" type="submit" value="이미지 서버 전송">
+            </div>
+        </form>
+    </div>
+</body>
 {% endblock %}

@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Jua', "돋움", sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.CreateEmotioconBanner {
+    width: 100%;
+    height: 125px;
+    /* background-image: url("../img/banner2.jpg"); */
+    background-color: rgba(163, 163, 163, 0.5);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.CreateEmotioconBanner .text {
+    font-size: 42px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    animation: titleText 1s ease-in-out;
+}
+
+@keyframes titleText {
+    0% {
+        transform: translateY(40px);
+    }
+
+    92% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1320px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 10px;
+}
+
+.sidebar {
+    margin-top: 20px;
+    width: 190px;
+}
+
+.mainMenu {
+    background: rgb(77, 181, 96);
+    border-radius: 7px;
+    padding: 10px 15px;
+}
+
+.mainMenu ul {
+    padding: 0;
+    display: block;
+
+}
+
+.mainMenu ul li {
+    list-style: none;
+    display: block;
+}
+
+.mainMenu ul li a {
+    display: block;
+    padding: 10px;
+    color: aliceblue;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.writeBtnBox {
+    margin-top: 10px;
+}
+
+.writeBtn {
+    border-radius: 7px;
+    width: 100%;
+    background: rgb(32, 59, 35);
+    border: 1px solid rgb(32, 59, 35);
+    color: white;
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.writeBtn .arrow {
+    display: inline-block;
+    padding-left: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.CreateWrap {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 7px;
+    width: 90%;
+    height: 430px;
+    margin: 20px 0 0 10px;
+    padding: 0 10px;
+}
+
+.guide_text {
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+
+    /* mobile */
+    .container {
+        display: grid;
+        grid-template-rows: repeat(3, auto);
+    }
+
+    .CreateEmotioconBanner {
+        height: 100px;
+        margin-bottom: 0;
+    }
+
+    .CreateEmotioconBanner .text {
+        font-size: 26px;
+    }
+
+    .wrapper {
+        display: grid;
+        /* flex-direction: column; */
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .mainMenu {
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .mainMenu ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .mainMenu ul li a {
+        font-size: 14px;
+        padding: 12px 10px;
+    }
+
+    .writeBtnBox {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    /* tablet */
+    .sidebar {
+        padding-left: 10px;
+        width: 180px;
+        font-size: 13px;
+    }
+
+    .writeBtn,
+    .arrow {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width:767px) {
+    .mainMenu ul li a:hover {
+        padding-left: 20px;
+        background: rgb(101, 164, 108);
+    }
+
+    .writeBtn:hover {
+        background-color: white;
+        color: rgb(32, 59, 35);
+    }
+
+    .writeBtn:hover .arrow {
+        transform: translateX(30px);
+    }
+}
