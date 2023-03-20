@@ -51,7 +51,7 @@
 </div>
 
 <details>
-  <summary><h4>DB 설계</h4></summary>
+  <summary><h4>Database Design</h4></summary>
   
   DB 설계 추가예정
 </details>
@@ -59,10 +59,11 @@
 <br>
 
 <details>
-  <summary><h4>웹(스토리보드)</h4></summary>
+  <summary><h4>Storyboard</h4></summary>
+  [임시 스토리보드]
   
   ![img](https://user-images.githubusercontent.com/103239379/226330891-38037002-c71c-46e8-90fb-698a02a5d36e.jpg)
-  웹 스토리보드 추가예정
+  스토리보드 수정예정
 </details>
 
 <br><br><br>
