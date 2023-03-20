@@ -61,8 +61,10 @@
 <details>
   <summary><h4>웹(스토리보드)</h4></summary>
   
+  ![img](https://user-images.githubusercontent.com/103239379/226330891-38037002-c71c-46e8-90fb-698a02a5d36e.jpg)
   웹 스토리보드 추가예정
 </details>
 
 <br><br><br>
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
+
