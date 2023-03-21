@@ -2,6 +2,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 # Create your views here.
 # 회원가입
@@ -31,6 +32,7 @@ def login(request):
             auth.login(request, user)
             return redirect('home')
         else:
+            # messages.warning(request, 'Login failed')
             return render(request, 'login.html', {'error': 'username or password is incorrect.'})
     else:
         return render(request, 'login.html')

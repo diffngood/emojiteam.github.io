@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Img
+from .models import Img, CameraImage
 from django.http import HttpResponse
 from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Create your views here.
 
@@ -37,8 +39,16 @@ def success(request):
     return HttpResponse('Image Uploaded Successfully')
 
 
+@csrf_exempt
 def webcam(request):
-    return render(request, 'webcam.html')
+    if request.method == 'POST':
+        image = request.FILES.get('camera-image')
+        CameraImage.objects.create(image=image)
+    images = CameraImage.objects.all()
+    context = {
+        'images': images
+    }
+    return render(request, 'webcam.html', context)
 
 
 def detail(request, pk):

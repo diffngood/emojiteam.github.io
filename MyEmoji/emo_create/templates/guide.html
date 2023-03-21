@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
-    <link rel="stylesheet" href="{% static 'css/guide.css' %}">
+    <link rel="stylesheet" href="{% static 'css/guide.css' %}?after">
     <title>Detail</title>
 </head>
 <div>
@@ -23,13 +23,13 @@
             <div class="sidebar">
                 <nav class="mainMenu">
                     <ul>
-                        <li><a href="">Guide</a></li>
-                        <li><a href="upload_img/">Upload a picture</a></li>
-                        <li><a href="webcam/">WebCam</a></li>
+                        <li><a href="/emo_create/">Guide</a></li>
+                        <li><a href="/emo_create/upload_img">Upload a image</a></li>
+                        <li><a href="/emo_create/webcam">WebCam</a></li>
                     </ul>
                 </nav>
                 <div class="writeBtnBox">
-                    <button class="writeBtn">생성된 이모티콘<span class="arrow">▶</span></button>
+                    <button class="writeBtn" style="font-size: 12px;">생성된 이모티콘<span class="arrow">▶</span></button>
                 </div>
             </div>
             <div class="CreateWrap">
