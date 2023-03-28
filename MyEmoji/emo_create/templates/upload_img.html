@@ -26,13 +26,8 @@
             </li>
         </ul>
         <div class="upload_box">
-            {% if not img.image %}
             <p class="message">Files to upload</p>
-            {% endif %}
-
-            {% if img.image %}
-            <img src="{{ img.image.url }}" style="height: 400px;">
-            {% endif %}
+            <div id="image_container"></div>
         </div>
         <br>
 
@@ -40,10 +35,22 @@
             {% csrf_token %}
             <div class="filebox">
                 <label for="image_file">업로드</label>
-                <input id="image_file" name="image" type="file">
+                <input id="image_file" name="image" type="file" accept="image/*" onchange="upload_img(event);">
                 <input class="submit_btn" type="submit" value="이미지 서버 전송">
             </div>
         </form>
     </div>
+    <script>
+        function upload_img(event) {
+            var reader = new FileReader();
+
+            reader.onload = function (event) {
+                var img = document.createElement("img");
+                img.setAttribute("src", event.target.result);
+                document.querySelector("div#image_container").appendChild(img);
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 </body>
 {% endblock %}

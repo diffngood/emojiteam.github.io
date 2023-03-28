@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after" type="text/css">
 </head>
 
 <body>
@@ -14,22 +14,22 @@
     <nav id="nav">
         <a href="/">logo</a>
         <ul class="main_nav_bar">
-            <li><a href="/emo_create" class='item item1'>이모티콘 제작</a></li>
-            <li><a href="/emo_board" class='item item2'>이모티콘 공유</a></li>
-            <li><a href="/chat" class='item item3'>채팅</a></li>
-            <li><a href="/my_emo" class='mysetting_item mystudio'>My Emoticon</a>
+            <li><a href="/emo_create" class='nav-item'>이모티콘 제작</a></li>
+            <li><a href="/emo_board" class='nav-item'>이모티콘 공유</a></li>
+            <li><a href="/chat" class='nav-item'>채팅</a></li>
+            <li><a href="/my_emo" class='nav-item'>My Emoticon</a>
         </ul>
 
         <ul class="sub_nav_bar">
-            <li><a href="/" class='item item3'>홈</a></li>
+            <li><a href="/" class='nav-item'>홈</a></li>
             {% if user.is_authenticated %}
             <li>
                 <p class="username_zone" style="color: black;">{{ user.username}}님</p>
             </li>
-            <li><a href="/logout" class='item item1'>로그아웃</a></li>
+            <li><a href="/logout" class='nav-item'>로그아웃</a></li>
             {% else %}
-            <li><a href="/login" class='item item1'>로그인</a></li>
-            <li><a href="/signup" class='item item2'>회원가입</a></li>
+            <li><a href="/login" class='nav-item'>로그인</a></li>
+            <li><a href="/signup" class='nav-item'>회원가입</a></li>
             {% endif %}
         </ul>
     </nav>
