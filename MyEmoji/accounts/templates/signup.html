@@ -1,23 +1,29 @@
 {% extends 'navbar.html' %}
-{% load bootstrap4 %}
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}?after">
+{% endblock %}
+
+{% block title %}
+    SIGN_UP
+{% endblock %}
+
 {% block content %}
-<div class="wrapper" style="text-align: center;">
-    <h1>회원가입</h1>
-    <form method="POST">
-        {% csrf_token %}
-        아이디: <br>
-        <input name="username" type="text">
-        <br>
-        비밀번호: <br>
-        <input name="password1" type="password">
-        <br>
-        비밀번호 확인: <br>
-        <input name="password2" type="password">
-        <br>
-        이메일: <br>
-        <input name="email" type="email">
-        <br><br>
-        <input type="submit" class="btn btn-primary" value="Sign Up">
-    </form>
+
+{% csrf_token %}
+<div class="wrap" style="text-align: center;">
+    <div class='signup_wrap'>
+        <h2 class='signup_title'>회원가입</h2>
+        <form class='signup_form' method="POST">
+            {% csrf_token %}
+            <input name="username" type="text" placeholder=" ID">
+            <input name="password1" type="password" placeholder=" Password">
+            <input name="password2" type="password" placeholder= " Password Check">
+            <input name="email" type="email" placeholder=" e-mail">
+            <br>
+            <input type="submit" class="signup_btn" value="Sign Up">
+        </form>
+    </div>
 </div>
 {% endblock %}

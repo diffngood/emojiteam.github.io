@@ -1,18 +1,15 @@
 {% extends 'navbar.html' %}
 {% load static %}
-{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
+{% block static %}
     <link rel="stylesheet" href="{% static 'css/upload_img.css' %}?after">
-    <title>Upload_img</title>
-</head>
+{% endblock %}
 
-<body>
+{% block title %}
+    Upload_img
+{% endblock %}
 
+{% block content %}
     <div class="container">
         <ul style="display: flex; flex-direction: row; margin-bottom: 12px;">
             <li style="list-style: none; margin: 0 10px;">
@@ -40,6 +37,7 @@
             </div>
         </form>
     </div>
+
     <script>
         function upload_img(event) {
             var reader = new FileReader();
@@ -52,5 +50,5 @@
             reader.readAsDataURL(event.target.files[0]);
         }
     </script>
-</body>
+
 {% endblock %}

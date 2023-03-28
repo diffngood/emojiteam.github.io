@@ -1,26 +1,23 @@
 {% extends 'navbar.html' %}
 {% load static %}
-{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
+{% block static %}
     <link rel="stylesheet" href="{% static 'css/upload_img.css' %}">
-    <title>Detail</title>
-</head>
+{% endblock %}
 
-<body>
+{% block title %}
+    Detail
+{% endblock %}
+
+{% block content %}
     <div class="container">
         <h4>DB_Num: {{img.pk}}</h4>
         <h3>이미지 생성일 - {{img.date}}</h3><br>
         {% if img.image %}
         <h5>이미지 상대경로: {{img.image.url}}</h5><br>
-        <h5>이미지 절대경로: {{img.image.path}}></h5><br>
-        <img src="{{ img.image.url }}" style="height: 400px;">
+        <h5>이미지 절대경로: {{img.image.path}}</h5><br>
+        <img src="{{ img.image.url }}" style="height: 300px;">
         <br>
         {% endif %}
     </div>
-</body>
 {% endblock %}

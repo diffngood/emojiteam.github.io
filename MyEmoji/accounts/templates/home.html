@@ -1,38 +1,30 @@
 {% extends "navbar.html" %}
 {% load static %}
 
+{% block static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?after">
+{% endblock %}
+
+{% block title %}
+    HOME
+{% endblock %}
+
 {% block content %}
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <title>Home</title>
-</head>
-
-<body>
     <div class='banner'>
         <div class='banner-info'>
             <h1>쉽고 다양하고 완벽하게,<br>나만의 이모티콘을 생성해 보세요</h1><br>
             <button type="button" class="create_btn" onClick="location.href='emo_create'">이모티콘 생성하러 가기</button>
         </div>
     </div>
-    <div class="container">
-        내용 추가
-    </div>
-</body>
+    {% comment %} <div class="home_container">
+        <div class="group">
+            <div class="item" id="group_item_num1"></div>
+            <div class="item" id="group_item_num2"></div>
+            <div class="item" id="group_item_num3"></div>
+            <div class="item" id="group_item_num4"></div>
+            <div class="item" id="group_item_num5"></div>
+          </div>
+    </div> {% endcomment %}
 {% endblock %}
 
-
-
-<!-- <div style="text-align: center;">
-    <h1>사용자의 이름을 입력해주세요.</h1>
-    <br>
-    <form action="hello">
-        <label for="nameInput">이름 : </label>
-        <input type="nameInput" name="name">
-        <input type="submit" value="제출">
-    </form>
-</div> -->
+{% comment %} https://wsss.tistory.com/2017 {% endcomment %}

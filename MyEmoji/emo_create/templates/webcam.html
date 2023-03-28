@@ -1,17 +1,16 @@
 {% extends 'navbar.html' %}
 {% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'css/guide.css' %}?after">
+{% endblock %}
+
+{% block title %}
+    Webcam
+{% endblock %}
+
 {% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after">
-    <link rel="stylesheet" href="{% static 'css/guide.css' %}?after">
-    <title>Detail</title>
-</head>
-
-<body>
     <div>
         <section class="CreateEmotioconBanner">
             <h1 class="CreateEmotioconBanner_text">
@@ -54,6 +53,7 @@
             </section>
         </div>
     </div>
+    
     <script>
         const video = document.getElementById('video');
         const canvas = document.createElement('canvas');
@@ -79,5 +79,4 @@
         }
     </script>
     <!-- https://zinee-world.tistory.com/551 -->
-</body>
 {% endblock %}

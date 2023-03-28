@@ -10,7 +10,6 @@ DATABASES = {
         # 4. DB 패스워드
         'PASSWORD': '0000',
         # 5. DB 주소 / 연결할 db에 따라 다를 수 있음
-        # 'HOST': '192.168.219.103',
         'HOST': 'localhost',
         # 6. 포트번호
         'PORT': '3306',
