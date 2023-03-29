@@ -15,8 +15,8 @@ LOGIN
         <h2 class='login_title'>LOGIN</h2>
         <form class='login_form' method="POST">
             {% csrf_token %}
-            <input type="text" name="username" placeholder=" Id">
-            <input type="password" name="password" placeholder=" Password">
+            <input class="input_box" type="text" name="username" placeholder=" Id">
+            <input class="input_box" type="password" name="password" placeholder=" Password">
             <input type="submit" class="login_btn" value="Login">
         </form>
     </div>

@@ -11,6 +11,42 @@ body {
     padding: 0;
 }
 
+#create {
+    color: white;
+}
+
+.mainMenu>.create_item {
+    display: inline-block;
+}
+
+.mainMenu>.create_item li {
+    float: left;
+    line-height: calc(84px + 10px);
+    padding: 0 30px;
+    list-style: none;
+}
+
+.mainMenu>.create_item li a{
+    padding: 10px;
+    color: black;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.mainMenu{
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    left: 0;
+    margin-top: 64px;
+    height: 75px;
+    background-color: #b59856;
+    border-bottom-left-radius: 1.2vw;
+    border-bottom-right-radius: 1.2vw;
+}
+
 .CreateEmotioconBanner {
     width: 100%;
     height: 125px;
@@ -23,7 +59,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 84px;
+    margin-top: calc(84px + 75px - 11px);
     margin-bottom: 20px;
 }
 
@@ -58,46 +94,6 @@ a {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-}
-
-.wrapper {
-    width: 100%;
-    max-width: 1320px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0 10px;
-}
-
-.sidebar {
-    margin-top: 20px;
-    width: 190px;
-}
-
-.mainMenu {
-    background: #fac240;
-    border-radius: 7px;
-    padding: 10px 15px;
-}
-
-.mainMenu ul {
-    padding: 0;
-    display: block;
-
-}
-
-.mainMenu ul li {
-    list-style: none;
-    display: block;
-}
-
-.mainMenu ul li a {
-    display: block;
-    padding: 10px;
-    color: aliceblue;
-    border-radius: 20px;
-    transition: all 0.3s ease-in-out;
 }
 
 .writeBtnBox {
@@ -214,39 +210,23 @@ a {
         font-size: 14px;
         padding: 12px 10px;
     }
-
-    .writeBtnBox {
-        display: none;
-    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 
     /* tablet */
-    /* .sidebar {
-        padding-left: 10px;
-        width: 180px;
-        font-size: 13px;
-    }
-
-    .writeBtn,
-    .arrow {
-        font-size: 14px;
-    } */
 }
 
 @media screen and (min-width:767px) {
-    /* .mainMenu ul li a:hover {
-        padding-left: 20px;
-        background: rgb(101, 164, 108);
+    .mainMenu ul li a:hover {
+        padding-left: 13px;
+        background: #333;
+        color: white;
     }
 
     .writeBtn:hover {
-        background-color: white;
-        color: rgb(32, 59, 35);
+        background-color: #333;
+        color: white;
+        border: none;
     }
-
-    .writeBtn:hover .arrow {
-        transform: translateX(30px);
-    } */
 }

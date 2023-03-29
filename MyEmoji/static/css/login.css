@@ -1,3 +1,7 @@
+#login{
+    color: white;
+}
+
 .wrap {
     height: calc(100vh - 100px);
     display: flex;
@@ -42,6 +46,10 @@
     color: white;
     border: none;
 }
+
+/* .input_box{
+    border: #fac240;
+} */
 
 input {
     width: 60%;

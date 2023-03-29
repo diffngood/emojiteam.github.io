@@ -5,56 +5,65 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after" type="text/css">
     <link rel="icon" href="{% static 'smiling.png'%}">
-    {% comment %} 다음 html에 적용할 css 파일 경로 넣는 곳 {% endcomment %}
+    <!-- 다음 html에 적용할 css 파일 경로 넣는 곳 -->
     {% block static %}{% endblock%}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
     <!-- 네비게이션바 -->
     <nav class="nav">
-        <a href="/">logo</a>
+        <a class="logo" href="/">My Emoticon</a>
         <ul class="main_nav_bar">
-            <li><a href="/emo_create" class='nav-item'>이모티콘 제작</a></li>
-            <li><a href="/emo_board" class='nav-item'>이모티콘 공유</a></li>
-            <li><a href="/chat" class='nav-item'>채팅</a></li>
+            <li><a href="/emo_create" class='nav-item' id="create">Create</a></li>
+            <li><a href="/emo_board" class='nav-item'>Board</a></li>
+            <li><a href="/chat" class='nav-item'>Chat</a></li>
             <li><a href="/my_emo" class='nav-item'>My Emoticon</a>
         </ul>
 
         <ul class="sub_nav_bar">
-            <li><a href="/" class='nav-item'>홈</a></li>
+            <li><a href="/" class='nav-item'>Home</a></li>
             {% if user.is_authenticated %}
             <li>
-                <p class="username_zone" style="color: black;">{{ user.username}}님</p>
+                <p class="username_zone" style="color: black;">{{ user.username}}</p>
             </li>
-            <li><a href="/logout" class='nav-item'>로그아웃</a></li>
+            <li><a href="/logout" class='nav-item'>Logout</a></li>
             {% else %}
-            <li><a href="/login" class='nav-item'>로그인</a></li>
-            <li><a href="/signup" class='nav-item'>회원가입</a></li>
+            <li><a href="/login" class='nav-item' id="login">Login</a></li>
+            <li><a href="/signup" class='nav-item' id="signup">Sign up</a></li>
             {% endif %}
         </ul>
     </nav>
-    <!-- <h3><a href="logout">로그아웃</a></h3> -->
-
-    <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+    
+    <!-- 기본 템플릿 안에 삽입될 내용 -->
     {% block content %}
     {% endblock %}
-    <!-- 기본 템플릿 안에 삽입될 내용 End -->
+
     <script>
         const menu = document.querySelector('.nav');
+        const itemlist = document.querySelectorAll('.nav-item');
         const menuHeight = menu.getBoundingClientRect().height;
-
-        document.addEventListener('scroll', () => {
-            if (window.scrollY > menuHeight) {
-                menu.classList.add('scroll_nav');
-            } else {
-                menu.classList.remove('scroll_nav');
-            }
+        
+        $(function() {
+            document.addEventListener('scroll', () => {
+                if (window.scrollY > menuHeight) {
+                    menu.classList.add('scroll_nav');
+                    $('.nav-item').addClass('nav-item-scroll');
+                    itemlist.classList.remove('nav-item');
+                } else {
+                    $('.nav-item').removeClass('nav-item-scroll');
+                    menu.classList.remove('scroll_nav');
+                }
+            });
+        
         });
     </script>
+
+    <!-- 기본 템플릿 안에 삽입될 JavaScript -->
     {% block js %}
     {% endblock %}
 </body>

@@ -10,24 +10,20 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <ul style="display: flex; flex-direction: row; margin-bottom: 12px;">
-            <li style="list-style: none; margin: 0 10px;">
-                <a style="color: #653;" href="/emo_create">Guide</a>
-            </li>
-            <li style="list-style: none; margin: 0 10px;">
-                <a style="color: #653;" href="/emo_create/upload_img">Upload a image</a>
-            </li>
-            <li style="list-style: none; margin: 0 10px;">
-                <a style="color: #653;" href="/emo_create/webcam">WebCam</a>
-            </li>
+    <nav class="mainMenu">
+        <ul class="create_item">
+            <li><a href="/emo_create/">Guide</a></li>
+            <li><a href="/emo_create/upload_img">Upload a image</a></li>
+            <li><a href="/emo_create/webcam">WebCam</a></li>
         </ul>
+    </nav>
+    
+    <div class="container">
         <div class="upload_box">
             <p class="message">Files to upload</p>
             <div id="image_container"></div>
         </div>
         <br>
-
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="filebox">

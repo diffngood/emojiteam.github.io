@@ -11,6 +11,14 @@ Guide
 
 {% block content %}
 <div>
+    <nav class="mainMenu">
+        <ul class="create_item">
+            <li><a href="/emo_create/">Guide</a></li>
+            <li><a href="/emo_create/upload_img">Upload a image</a></li>
+            <li><a href="/emo_create/webcam">WebCam</a></li>
+        </ul>
+    </nav>
+
     <section class="CreateEmotioconBanner">
         <h1 class="CreateEmotioconBanner_text">
             이 모 티 콘 제 작
@@ -19,24 +27,10 @@ Guide
         </h1>
     </section>
     <div class="container">
-        <section class="wrapper">
-            <div class="sidebar">
-                <nav class="mainMenu">
-                    <ul>
-                        <li><a href="/emo_create/">Guide</a></li>
-                        <li><a href="/emo_create/upload_img">Upload a image</a></li>
-                        <li><a href="/emo_create/webcam">WebCam</a></li>
-                    </ul>
-                </nav>
-                <div class="writeBtnBox">
-                    <button class="writeBtn" style="font-size: 12px;">생성된 이모티콘<span class="arrow">▶</span></button>
-                </div>
-            </div>
-            <div class="CreateWrap">
-                <br /><br /><br /><br />
-                <h1 className='guide_text'>Guide 설명</h1>
-            </div>
-        </section>
+        <div class="CreateWrap">
+            <br /><br /><br /><br />
+            <h1 className='guide_text'>Guide 설명</h1>
+        </div>
     </div>
-</div>
+</div> 
 {% endblock %}
