@@ -1,6 +1,7 @@
 <!doctype html>
 {% load static %}
 <html lang="ko">
+
 <head>
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}?after" type="text/css">
     <link rel="icon" href="{% static 'smiling.png'%}">
@@ -14,7 +15,7 @@
 
 <body>
     <!-- 네비게이션바 -->
-    <nav id="nav">
+    <nav class="nav">
         <a href="/">logo</a>
         <ul class="main_nav_bar">
             <li><a href="/emo_create" class='nav-item'>이모티콘 제작</a></li>
@@ -42,6 +43,18 @@
     {% block content %}
     {% endblock %}
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
+    <script>
+        const menu = document.querySelector('.nav');
+        const menuHeight = menu.getBoundingClientRect().height;
+
+        document.addEventListener('scroll', () => {
+            if (window.scrollY > menuHeight) {
+                menu.classList.add('scroll_nav');
+            } else {
+                menu.classList.remove('scroll_nav');
+            }
+        });
+    </script>
     {% block js %}
     {% endblock %}
 </body>

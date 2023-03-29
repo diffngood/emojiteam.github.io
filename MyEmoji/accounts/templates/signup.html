@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block static %}
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}?after">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}?after">
 {% endblock %}
 
 {% block title %}
-    SIGN_UP
+SIGN_UP
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,7 @@
             {% csrf_token %}
             <input name="username" type="text" placeholder=" ID">
             <input name="password1" type="password" placeholder=" Password">
-            <input name="password2" type="password" placeholder= " Password Check">
+            <input name="password2" type="password" placeholder=" Password Check">
             <input name="email" type="email" placeholder=" e-mail">
             <br>
             <input type="submit" class="signup_btn" value="Sign Up">

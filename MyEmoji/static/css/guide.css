@@ -23,6 +23,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: 84px;
     margin-bottom: 20px;
 }
 
@@ -75,7 +76,7 @@ a {
 }
 
 .mainMenu {
-    background: rgb(77, 181, 96);
+    background: #fac240;
     border-radius: 7px;
     padding: 10px 15px;
 }
@@ -222,7 +223,7 @@ a {
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 
     /* tablet */
-    .sidebar {
+    /* .sidebar {
         padding-left: 10px;
         width: 180px;
         font-size: 13px;
@@ -231,11 +232,11 @@ a {
     .writeBtn,
     .arrow {
         font-size: 14px;
-    }
+    } */
 }
 
 @media screen and (min-width:767px) {
-    .mainMenu ul li a:hover {
+    /* .mainMenu ul li a:hover {
         padding-left: 20px;
         background: rgb(101, 164, 108);
     }
@@ -247,5 +248,5 @@ a {
 
     .writeBtn:hover .arrow {
         transform: translateX(30px);
-    }
+    } */
 }
