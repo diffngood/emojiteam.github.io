@@ -1,0 +1,40 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'css/board.css' %}?after">
+{% endblock %}
+
+{% block title %}
+board
+{% endblock %}
+
+{% block content %}
+        <br>
+        <br>
+        <br>
+        <br>
+<div class="board_container">
+    <div class="board_title">
+        <h3 style="background-image: url({% static 'img/마크.jpg' %}"><span class="title">게시판</span></h3>
+        <div class="introduce_title_bg" style="background: url({% static 'img/마크.jpg' %} no-repeat 50% 100%);"></div>
+        <ul>
+            <li><a href="{% url 'photo' %}">포토갤러리</a></li>
+        </ul>
+    </div>
+    <div class="board_content">
+        <div class="toolbar">
+            <span>게시판</span>
+            <span>포토갤러리 게시판 글쓰기</span>
+        </div>
+        <h3>포토갤러리 글쓰기</h3>
+        <hr>
+        <form method="POST" action="{% url 'photo_create' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form photoForm %}
+            <input name="images" id="images" type="file" accept="image/*" style="padding-bottom: 20px;">
+            <input type="submit" class="btn btn-success col-12" value="글쓰기">
+        </form>
+    </div>
+</div>
+{% endblock%}

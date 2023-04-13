@@ -23,9 +23,15 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
+<<<<<<< HEAD
+    path('accounts/', include('accounts.urls')),
+    path('emo_create/', include('emo_create.urls')),
+    path('blog/', include('blog.urls')),
+=======
     # 아래꺼 지워야함
     path('', RedirectView.as_view(pattern_name="chat:index"), name="root"),
     path('emo_create/', include('emo_create.urls')),
     path('emo_board/', include('blog.urls')),
     path('chat/', include('chat.urls')),
+>>>>>>> cdb81bf9dfea302e2301f755250ae452be11be4f
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

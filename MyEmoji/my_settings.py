@@ -1,4 +1,13 @@
 DATABASES = {
+<<<<<<< HEAD
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "EMOJIDB",
+        "USER": "root",
+        "PASSWORD": "1234",
+        "HOST": "localhost",
+        "PORT": "3306",
+=======
     'default': {
         # 1. 사용할 엔진 설정
         'ENGINE': 'django.db.backends.mysql',
@@ -13,6 +22,7 @@ DATABASES = {
         'HOST': 'localhost',
         # 6. 포트번호
         'PORT': '3306',
+>>>>>>> cdb81bf9dfea302e2301f755250ae452be11be4f
     }
 }
 SECRET_KEY = "django-insecure-x7tzy4(-4bj$hlf40tq+rk4w=^pc_vr$c*yy7)s5gypa&s^88i"
