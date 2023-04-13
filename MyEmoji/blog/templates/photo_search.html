@@ -18,16 +18,8 @@ board
     <div class="board_title">
         <h3 style="background-image: url({% static 'img/마크.jpg' %}"><span class="title">게시판</span></h3>
         <div class="introduce_title_bg" style="background: url({% static 'img/마크.jpg' %} no-repeat 50% 100%);"></div>
-        <ul>
-            <li><a href="{% url 'photo' %}">포토갤러리</a></li>
-        </ul>
     </div>
     <div class="board_content">
-        <div class="toolbar">
-            <span>게시판</span>
-            <span>포토갤러리</span>
-        </div>
-        <h3>포토갤러리</h3>
         <hr>
         <div class="search">
             <ul class="board_module_search">
@@ -53,11 +45,6 @@ board
                 <colgroup>
                     <col width="100%">
                 </colgroup>
-                <thead>
-                    <tr>
-                        <th scope="col">포토갤러리</th>
-                    </tr>
-                </thead>
             </table>
             <div style="display: grid; grid-template-columns: 206px 206px 206px 206px; grid-template-rows: 250px 250px 250px;">
                 {% for list in page_obj %}
