@@ -26,15 +26,15 @@ body {
     list-style: none;
 }
 
-.mainMenu>.create_item li a{
+.mainMenu>.create_item li a {
     padding: 10px;
     color: black;
-    font-weight: bold;
+    font-weight: 800;
     border-radius: 20px;
     transition: all 0.3s ease-in-out;
 }
 
-.mainMenu{
+.mainMenu {
     width: 100%;
     position: fixed;
     text-align: center;
@@ -45,44 +45,7 @@ body {
     background-color: #b59856;
     border-bottom-left-radius: 1.2vw;
     border-bottom-right-radius: 1.2vw;
-}
-
-.CreateEmotioconBanner {
-    width: 100%;
-    height: 125px;
-    /* background-image: url("../img/banner2.jpg"); */
-    background-color: rgba(163, 163, 163, 0.5);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: calc(84px + 75px - 11px);
-    margin-bottom: 20px;
-}
-
-.CreateEmotioconBanner .text {
-    font-size: 42px;
-    font-weight: 700;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    animation: titleText 1s ease-in-out;
-}
-
-@keyframes titleText {
-    0% {
-        transform: translateY(40px);
-    }
-
-    92% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+    z-index: 4;
 }
 
 a {
@@ -94,6 +57,8 @@ a {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
+    margin-top: calc(84px + 75px - 11px + 5px);
+    height: calc(100vh - 153px);
 }
 
 .writeBtnBox {
@@ -119,10 +84,10 @@ a {
 }
 
 .CreateWrap {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #dbdbdb;
     border-radius: 7px;
     width: 90%;
-    height: 430px;
+    height: 500px;
     margin: 20px 0 0 10px;
     padding: 0 10px;
 }
@@ -136,8 +101,8 @@ a {
 .webcamWrap {
     border-radius: 7px;
     border: dashed 3px #eee;
-    width: 90%;
-    height: 100vh;
+    width: calc(100vw - 620px);
+    height: calc(100vh - 220px);
     margin: 20px 0 0 10px;
     padding: 0 10px;
     display: flex;
@@ -147,8 +112,10 @@ a {
 }
 
 #video {
+    margin-top: 77px;
     border: dotted 3px #f09;
-    height: 600px;
+    width: calc(100vw - 620px);
+    height: calc(100vh - 220px);
 }
 
 .capture_btn {
@@ -162,6 +129,18 @@ a {
     height: 39.2px;
     font-size: 16px;
     margin: 0px 15px;
+}
+
+#guide {
+    padding-left: 13px;
+    background: #333;
+    color: white;
+}
+
+#webcam {
+    padding-left: 13px;
+    background: #333;
+    color: white;
 }
 
 @media screen and (max-width: 767px) {
@@ -222,11 +201,5 @@ a {
         padding-left: 13px;
         background: #333;
         color: white;
-    }
-
-    .writeBtn:hover {
-        background-color: #333;
-        color: white;
-        border: none;
     }
 }

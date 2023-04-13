@@ -23,7 +23,7 @@ body {
     list-style: none;
 }
 
-.mainMenu>.create_item li a{
+.mainMenu>.create_item li a {
     padding: 10px;
     color: black;
     font-weight: bold;
@@ -31,7 +31,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-.mainMenu{
+.mainMenu {
     width: 100%;
     position: fixed;
     text-align: center;
@@ -42,6 +42,7 @@ body {
     background-color: #b59856;
     border-bottom-left-radius: 1.2vw;
     border-bottom-right-radius: 1.2vw;
+    z-index: 4;
 }
 
 .container {
@@ -60,8 +61,8 @@ body {
     justify-content: center;
     align-items: center;
     border: dashed 3px #dbdbdb;
-    width: calc(100vw - 620px);
-    height: calc(100vh - 220px);
+    width: calc(100vh - 29.5vh);
+    height: calc(100vh - 29vh);
 }
 
 .filebox {
@@ -89,6 +90,13 @@ body {
     clip: rect(0, 0, 0, 0);
 }
 
+
+
+#upload_img_view {
+    width: calc(100vh - 30vh);
+    height: calc(100vh - 30vh);
+}
+
 .submit_btn {
     display: inline-block;
     padding: .5em .75em;
@@ -102,16 +110,16 @@ body {
     margin: 0px 15px;
 }
 
+#upload {
+    padding-left: 13px;
+    background: #333;
+    color: white;
+}
+
 @media screen and (min-width:767px) {
     .mainMenu ul li a:hover {
         padding-left: 13px;
         background: #333;
         color: white;
-    }
-
-    .writeBtn:hover {
-        background-color: #333;
-        color: white;
-        border: none;
     }
 }
