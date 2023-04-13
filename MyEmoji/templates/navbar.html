@@ -39,19 +39,6 @@
             <li><a href="/signup" class='nav-item' id="signup">Sign up</a></li>
             {% endif %}
         </ul>
-
-        <ul class="media_sub_nav_bar">
-            <li><a href="/" class='nav-item'>Home</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="/logout" class='nav-item'>Logout</a></li>
-            <li>
-                <p class="username_zone" style="color: black;">"{{ user.username}}"</p>
-            </li>
-            {% else %}
-            <li><a href="/login" class='nav-item' id="login">Login</a></li>
-            <li><a href="/signup" class='nav-item' id="signup">Sign up</a></li>
-            {% endif %}
-        </ul>
     </nav>
 
     <!-- 기본 템플릿 안에 삽입될 내용 -->
