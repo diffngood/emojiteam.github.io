@@ -6,6 +6,7 @@ from .models import Img, CameraImage
 from django.http import HttpResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -15,6 +16,7 @@ def guide(request):
     return render(request, 'guide.html')
 
 
+@login_required
 def upload_img(request):
     if request.method == "POST":
         post = Img()
@@ -43,6 +45,7 @@ def success(request):
 
 
 @csrf_exempt
+@login_required
 def webcam(request):
     if request.method == 'POST':
         image = request.FILES.get('camera-image')

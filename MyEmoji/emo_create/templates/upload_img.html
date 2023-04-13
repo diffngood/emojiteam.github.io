@@ -2,49 +2,50 @@
 {% load static %}
 
 {% block static %}
-    <link rel="stylesheet" href="{% static 'css/upload_img.css' %}?after">
+<link rel="stylesheet" href="{% static 'css/upload_img.css' %}?after">
 {% endblock %}
 
 {% block title %}
-    Upload_img
+Upload_img
 {% endblock %}
 
 {% block content %}
-    <nav class="mainMenu">
-        <ul class="create_item">
-            <li><a href="/emo_create/">Guide</a></li>
-            <li><a href="/emo_create/upload_img">Upload a image</a></li>
-            <li><a href="/emo_create/webcam">WebCam</a></li>
-        </ul>
-    </nav>
-    
-    <div class="container">
-        <div class="upload_box">
-            <p class="message">Files to upload</p>
-            <div id="image_container"></div>
+<nav class="mainMenu">
+    <ul class="create_item">
+        <li><a href="/emo_create/">Guide</a></li>
+        <li><a href="/emo_create/upload_img" id="upload">Upload a image</a></li>
+        <li><a href="/emo_create/webcam">WebCam</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="upload_box">
+        <div id="image_container">
+            <img src="" alt="&nbsp;Files to upload" id="upload_img_view">
         </div>
-        <br>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="filebox">
-                <label for="image_file">업로드</label>
-                <input id="image_file" name="image" type="file" accept="image/*" onchange="upload_img(event);">
-                <input class="submit_btn" type="submit" value="이미지 서버 전송">
-            </div>
-        </form>
     </div>
+    <br>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="filebox">
+            <label for="image_file">업로드</label>
+            <input id="image_file" name="image" type="file" accept="image/*" onchange="upload_img(event);">
+            <input class="submit_btn" type="submit" value="이미지 서버 전송">
+        </div>
+    </form>
+</div>
 
-    <script>
-        function upload_img(event) {
-            var reader = new FileReader();
+<script>
+    function upload_img(event) {
+        var reader = new FileReader();
 
-            reader.onload = function (event) {
-                var img = document.createElement("img");
-                img.setAttribute("src", event.target.result);
-                document.querySelector("div#image_container").appendChild(img);
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
+        reader.onload = function (event) {
+            var img = document.querySelector("#upload_img_view");
+            img.setAttribute("src", event.target.result);
+            document.querySelector("div#image_container").appendChild(img);
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 
 {% endblock %}
