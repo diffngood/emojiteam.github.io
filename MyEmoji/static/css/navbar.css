@@ -7,19 +7,19 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 나눔고딕, 'NanumGothic', 'NanumGothicWeb',sans-serif;
+    font-family: 나눔고딕, 'NanumGothic', 'NanumGothicWeb', sans-serif;
 }
 
 .logo {
     font-family: 'Rock Salt', cursive;
 }
 
-.username_zone{
+.username_zone {
     font-family: 'Titan One', cursive;
     color: aliceblue;
 }
 
-a{
+a {
     color: black;
     text-decoration: none;
 }
@@ -43,7 +43,8 @@ a{
     color: #fdd741;
 }
 
-.nav>a {
+.nav>a,
+.nav>.logo_wrap {
     line-height: 80px;
     display: block;
     font-size: 30px;
@@ -108,14 +109,31 @@ a:visited {
     font-size: 19px;
 }
 
-@media screen and (max-width: 768px) {
-
-    /* 모바일 */
-
+.media_sub_nav_bar {
+    display: none;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (max-width:768px) {
+
+    /* 모바일 */
+    .logo {
+        display: none;
+    }
+
+    .sub_nav_bar>li {
+        display: none;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1023px) {
 
     /* tablet */
+    .logo {
+        display: none;
+    }
+
+    .sub_nav_bar>li {
+        display: none;
+    }
 
 }

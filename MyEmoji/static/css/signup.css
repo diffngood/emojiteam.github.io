@@ -1,9 +1,10 @@
-#signup{
+#signup {
     color: white;
 }
 
 .wrap {
-    height: calc(100vh - 100px);
+    margin-top: calc(84px + 75px - 11px + 5px);
+    height: calc(100vh - 153px - 50px);
     display: flex;
     flex-direction: column;
     justify-content: center;

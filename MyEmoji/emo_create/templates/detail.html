@@ -2,22 +2,61 @@
 {% load static %}
 
 {% block static %}
-    <link rel="stylesheet" href="{% static 'css/upload_img.css' %}">
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
 {% endblock %}
 
 {% block title %}
-    Detail
+Detail
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h4>DB_Num: {{img.pk}}</h4>
-        <h3>이미지 생성일 - {{img.date}}</h3><br>
+<nav class="mainMenu">
+    <ul class="create_item">
+        <li><a href="/emo_create/">Guide</a></li>
+        <li><a href="/emo_create/upload_img" id="upload">Upload a image</a></li>
+        <li><a href="/emo_create/webcam">WebCam</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="left">
         {% if img.image %}
-        <h5>이미지 상대경로: {{img.image.url}}</h5><br>
-        <h5>이미지 절대경로: {{img.image.path}}</h5><br>
-        <img src="{{ img.image.url }}" style="height: 300px;">
-        <br>
+        <img src="{{ img.image.url }}" id="upload_img_view">
         {% endif %}
     </div>
+    <div class="right">
+        <div class="text">
+            <!-- <h4>DB_Num: {{img.pk}}</h4>
+            <h3>이미지 생성일 - {{img.date}}</h3><br>
+            {% if img.image %}
+            <h5>이미지 상대경로: {{img.image.url}}</h5><br>
+            <h5>이미지 절대경로: {{img.image.path}}</h5><br>
+            {% endif %} -->
+            <form action="#">
+                <h2>Select a style</h2>
+                <div class="inputGroup">
+                    <input id="radio1" name="radio" type="radio" checked />
+                    <label for="radio1">Style 1</label>
+                </div>
+                <div class="inputGroup">
+                    <input id="radio2" name="radio" type="radio" />
+                    <label for="radio2">Style 2</label>
+                </div>
+                <div class="inputGroup">
+                    <input id="radio3" name="radio" type="radio" />
+                    <label for="radio3">Style 3</label>
+                </div>
+                <div class="inputGroup">
+                    <input id="radio4" name="radio" type="radio" />
+                    <label for="radio4">Style 4</label>
+                </div>
+                <div class="inputGroup">
+                    <input id="radio5" name="radio" type="radio" />
+                    <label for="radio5">Style 5</label>
+                </div>
+                <input class="create_btn" type="submit" value="이모티콘 생성">
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

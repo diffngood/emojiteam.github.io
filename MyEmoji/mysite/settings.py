@@ -11,11 +11,19 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from environ import Env
 import my_settings
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# redis추가
+env = Env()
+env_path = BASE_DIR / ".env"
+if env_path.exists():
+    with env_path.open(encoding="utf8") as f:
+        env.read_env(f, orverwrite=True)
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,6 +41,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'daphne',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -40,10 +50,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'bootstrap4',
+    "django_bootstrap5",
     'accounts',
     'blog',
     'emo_create',
+    'chat',
 ]
+
+LOGIN_URL = '/login/'
+
+ASGI_APPLICATION = 'mysite.asgi.application'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -80,6 +96,25 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = my_settings.DATABASES
+
+# redis추가
+# django channels layer
+if "CHANNEL_LAYER_REDIS_URL" in env:
+    channel_layer_redis = env.db_url("CHANNEL_LAYER_REDIS_URL")
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                "hosts": [
+                    {
+                        "host": channel_layer_redis["HOST"],
+                        "port": channel_layer_redis["PORT"] or 6379,
+                        "password": channel_layer_redis["PASSWORD"],
+                    },
+                ],
+            },
+        },
+    }
 
 
 # Password validation

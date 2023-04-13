@@ -1,0 +1,27 @@
+.chat_wrap {
+    margin-top: calc(84px + 75px - 11px + 5px);
+    /* height: calc(100vh - 153px); */
+    /* display: flex; */
+    /* flex-direction: row; */
+}
+
+/* 
+#chat_side_bar {
+    width: 15%;
+    height: 100%;
+    background-color: #EFF0F0;
+}
+
+#chat_setting {
+    width: 35%;
+    height: 100%;
+    background-color: #BCC1BD;
+
+}
+
+#chat {
+    width: 50%;
+    height: 100%;
+    background-color: #D4D9D4;
+
+} */

@@ -1,0 +1,21 @@
+{% extends 'chat/base.html' %}
+
+{% block title %}
+Chat(Index)
+{% endblock %}
+
+{% block content %}
+<div class="chat_wrap">
+    <h1>채팅방 목록</h1>
+
+    <ul>
+        {% for room in room_list%}
+        <li>
+            <a href="{% url 'chat:room_chat' room.pk %} ">{{ room.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <hr />
+    <a href="{% url 'chat:room_new' %}">새 채팅방 만들기</a>
+</div>
+{% endblock %}

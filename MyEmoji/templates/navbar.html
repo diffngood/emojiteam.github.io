@@ -17,7 +17,9 @@
 <body>
     <!-- 네비게이션바 -->
     <nav class="nav">
-        <a class="logo" href="/">My Emoticon</a>
+        <div class="logo_wrap">
+            <a class="logo" href="/">My Own Emoji</a>
+        </div>
         <ul class="main_nav_bar">
             <li><a href="/emo_create" class='nav-item' id="create">Create</a></li>
             <li><a href="/emo_board" class='nav-item'>Board</a></li>
@@ -37,8 +39,21 @@
             <li><a href="/signup" class='nav-item' id="signup">Sign up</a></li>
             {% endif %}
         </ul>
+
+        <ul class="media_sub_nav_bar">
+            <li><a href="/" class='nav-item'>Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="/logout" class='nav-item'>Logout</a></li>
+            <li>
+                <p class="username_zone" style="color: black;">"{{ user.username}}"</p>
+            </li>
+            {% else %}
+            <li><a href="/login" class='nav-item' id="login">Login</a></li>
+            <li><a href="/signup" class='nav-item' id="signup">Sign up</a></li>
+            {% endif %}
+        </ul>
     </nav>
-    
+
     <!-- 기본 템플릿 안에 삽입될 내용 -->
     {% block content %}
     {% endblock %}
@@ -47,8 +62,8 @@
         const menu = document.querySelector('.nav');
         const itemlist = document.querySelectorAll('.nav-item');
         const menuHeight = menu.getBoundingClientRect().height;
-        
-        $(function() {
+
+        $(function () {
             document.addEventListener('scroll', () => {
                 if (window.scrollY > menuHeight) {
                     menu.classList.add('scroll_nav');
@@ -59,7 +74,7 @@
                     menu.classList.remove('scroll_nav');
                 }
             });
-        
+
         });
     </script>
 

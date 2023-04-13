@@ -12,16 +12,17 @@ body {
     margin: 0;
     line-height: 47px;
     letter-spacing: 2px;
-  }
-  
-  .title {
+}
+
+.title {
     transform: translateX(-50%) rotate(-10deg);
     display: block;
     float: left;
     left: 50%;
     position: relative;
-  }
-  .title span {
+}
+
+.title span {
     transform: skew(-10deg);
     display: block;
     float: left;
@@ -29,17 +30,19 @@ body {
     min-width: 10px;
     min-height: 10px;
     position: relative;
-  }
-  
-  .title:nth-child(1) {
+}
+
+.title:nth-child(1) {
     color: #e55643;
-  }
-  .title:nth-child(2) {
+}
+
+.title:nth-child(2) {
     color: #f1c83c;
-  }
-  .title:nth-child(3) {
+}
+
+.title:nth-child(3) {
     color: #2b9f5e;
-  }
+}
 
 
 
@@ -229,4 +232,21 @@ body {
     padding: 30px 60px 30px 60px;
     font-family: 'Signika Negative', sans-serif;
     color: #616161;
+}
+
+@media screen and (max-width:768px) {
+
+    /* 모바일 */
+    .banner-title {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1023px) {
+
+    /* tablet */
+    .banner-title {
+        font-size: 35px;
+    }
+
 }

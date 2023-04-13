@@ -18,10 +18,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
+    # 아래꺼 지워야함
+    path('', RedirectView.as_view(pattern_name="chat:index"), name="root"),
     path('emo_create/', include('emo_create.urls')),
     path('emo_board/', include('blog.urls')),
+    path('chat/', include('chat.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
