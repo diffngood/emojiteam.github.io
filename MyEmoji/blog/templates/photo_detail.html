@@ -1,0 +1,72 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'css/board.css' %}?after">
+{% endblock %}
+
+{% block title %}
+board
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<span style="color: white;">{{ photo_detail.update_counter }}</span>
+<!-- 함수 호출하여 hit+1 -->
+<div class="board_container">
+    <div class="board_title">
+        <h3 style="background-image: url({% static 'img/마크.jpg' %}"><span class="title">게시판</span></h3>
+        <div class="introduce_title_bg" style="background: url({% static 'img/마크.jpg' %} no-repeat 50% 100%);"></div>
+    </div>
+    <div class="board_content">
+        <hr>
+        <div class="detail_section" style="padding-top: 20px;">
+            <div class="page_article" style="width: 724px;">
+                <table class="grid" style="width: 100%; text-align: center; border-bottom: 1px solid #d4d4d4;">
+                    <colgroup style="display: table-column-group;">
+                        <col width="12%">
+                        <col width="64%">
+                        <col width="12%">
+                        <col width="12%">
+                    </colgroup>
+                    <tbody style="display: table-row-group; vertical-align: middle; border-color: inherit;">
+                        <tr style="display: table-row; vertical-align: inherit; border-color: inherit">
+                            <th>제목</th>
+                            <td style="font-weight: bold;">{{ photo_detail.title }}</td>
+                            <th>조회수</th>
+                            <td>{{ photo_detail.hit }}</td>
+                        </tr>
+                        <tr>
+                            <th>작성자</th>
+                            <td>{{ photo_detail.user }}</td>
+                            <th>작성일</th>
+                            <td style="font-size: 0.9em;">{{ photo_detail.created_date|date:"Y-m-d" }}</td>
+                        </tr>
+                        <tr>
+                            <th>첨부파일</th>
+                            <td colspan="3"><img src="{{ photo_detail.imgfile.url }}" style="width: 180px; height: 150px;" alt=""> <br>{{ photo_detail.imgfile }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="detail_content" style="padding-top: 20px; padding-bottom: 20px;">
+                    <p>
+                        {{ photo_detail.content }}
+                    </p>
+                </div>
+                <hr>
+
+                <div style="text-align: right;">
+                    <input type="button" value="목록" style="background: #b4b4b4; width: 100px; height: 40px; color: #fff; text-align: center; display: inline-block; font-size: 0.8em; font-weight: bold; min-width: 100px; line-height: 38px; padding: 0 10px; border: 0; outline: 0;" onclick="location.href='{% url 'photo' %}'">
+                    {% if user.is_authenticated %}
+                    <input type="button" value="수정" style="background: dodgerblue; width: 100px; height: 40px; color: #fff; text-align: center; display: inline-block; font-size: 0.8em; font-weight: bold; min-width: 100px; line-height: 38px; padding: 0 10px; border: 0; outline: 0;" onclick="location.href='{% url 'photo_edit' photo_detail.pk %}'">
+                    <input type="button" value="삭제" style="background: crimson; width: 100px; height: 40px; color: #fff; text-align: center; display: inline-block; font-size: 0.8em; font-weight: bold; min-width: 100px; line-height: 38px; padding: 0 10px; border: 0; outline: 0;" onclick="location.href='{% url 'photo_delete' photo_detail.pk %}'">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
