@@ -1,9 +1,9 @@
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "EMOJIDB",
-        "USER": "root",
-        "PASSWORD": "1234",
+        "NAME": "emojis_db",
+        "USER": "kwb",
+        "PASSWORD": "0000",
         "HOST": "localhost",
         "PORT": "3306",
     }

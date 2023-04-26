@@ -31,7 +31,8 @@ board
                         <input type="text" name="search_photo" id="search_photo" placeholder="검색어 입력">
                     </li>
                     <li>
-                        <input type="submit" class="photo_btn" value="검색" maxlength="100" tabindex="1" style="border: 0; outline: 0;">
+                        <input type="submit" class="photo_btn" value="검색" maxlength="100" tabindex="1"
+                            style="border: 0; outline: 0;">
                     </li>
                 </form>
             </ul>
@@ -42,7 +43,8 @@ board
                     <col width="100%">
                 </colgroup>
             </table>
-            <div style="display: grid; grid-template-columns: 206px 206px 206px 206px; grid-template-rows: 250px 250px 250px;">
+            <div
+                style="display: grid; grid-template-columns: 206px 206px 206px 206px; grid-template-rows: 250px 250px 250px;">
                 {% for list in page_obj %}
                 <div class="item" style="padding-top: 15px;">
                     <p style="text-align: left; font-size: 0.8em;">
@@ -59,7 +61,8 @@ board
             </div>
             {% if user.is_authenticated %}
             <div class="write">
-                <input type="button" class="write_btn" name="write_btn" value="글쓰기" onclick="location.href='{% url 'photo_create' %}'" style="border: 0; outline: 0;">
+                <input type="button" class="write_btn" name="write_btn" value="글쓰기"
+                    onclick="location.href='{% url 'photo_create' %}'" style="border: 0; outline: 0;">
             </div>
             {% endif %}
         </div>

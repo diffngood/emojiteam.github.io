@@ -2,7 +2,7 @@
 {% load static %}
 {% load bootstrap4 %}
 {% block static %}
-<link rel="stylesheet" href="{% static 'css/board.css' %}?after">
+<link rel="stylesheet" href="{% static 'css/board_create.css' %}?after">
 {% endblock %}
 
 {% block title %}
@@ -10,10 +10,10 @@ board
 {% endblock %}
 
 {% block content %}
-        <br>
-        <br>
-        <br>
-        <br>
+<br>
+<br>
+<br>
+<br>
 <div class="board_container">
     <div class="board_title">
     </div>
@@ -22,9 +22,14 @@ board
         <hr>
         <form method="POST" action="{% url 'photo_create' %}" enctype="multipart/form-data">
             {% csrf_token %}
-            {% bootstrap_form photoForm %}
-            <input name="images" id="images" type="file" accept="image/*" style="padding-bottom: 20px;">
-            <input type="submit" class="btn btn-success col-12" value="글쓰기">
+            <div class="input_wrap">
+                <input class="input_box title_box" type="text" name="title" placeholder="제목">
+                <input class="input_box content_box" type="text" name="content" placeholder="내용">
+            </div>
+            <div class="btn_wrap">
+                <input name="images" id="images" type="file" accept="image/*" style="padding-bottom: 20px;">
+                <input type="submit" class="btn btn-success col-12" value="글쓰기">
+            </div>
         </form>
     </div>
 </div>

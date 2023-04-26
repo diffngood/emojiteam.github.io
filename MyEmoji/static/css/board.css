@@ -1,7 +1,32 @@
+.board_container {
+    margin-top: calc(84px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#paging {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-item {
+    display: inline-block;
+}
+
 .board_container .board_content .search .board_module_search {
     font-size: 0;
     text-align: right;
 }
+
 .board_container .board_content .search .board_module_search select {
     width: 115px;
     height: 28px;
@@ -11,22 +36,25 @@
     appearance: none;
     background: #fff url('../static/img/selectbg.png') no-repeat 100% 0;
 }
+
 .board_container .board_content .search .board_module_search select option {
     font-weight: normal;
     display: block;
     white-space: nowrap;
     min-height: 1.2em;
 }
+
 .board_container .board_content .search .board_module_search li #search_material,
- .board_container .board_content .search .board_module_search li #search_photo {
+.board_container .board_content .search .board_module_search li #search_photo {
     width: 220px;
     height: 28px;
     border: 1px solid #cdcdcd;
     padding-left: 3px;
     box-sizing: border-box;
 }
+
 .board_container .board_content .search .board_module_search li .material_btn,
- .board_container .board_content .search .board_module_search li .photo_btn {
+.board_container .board_content .search .board_module_search li .photo_btn {
     background-color: #4f4f4f;
     width: 110px;
     height: 28px;
@@ -43,17 +71,34 @@
     font-weight: bold;
     padding-left: 5px;
 }
+
 .detail_section .page_article .grid tbody tr td {
     text-align: left;
     padding-left: 10px;
     letter-spacing: -0.025em;
     font-size: 0.9em;
 }
+
 .detail_section .page_article .grid tbody tr th,
 .detail_section .page_article .grid tbody tr td {
     height: 49px;
     border-top: 1px solid #d4d4d4;
 }
+
 .board_container .board_content .board_pt30 {
     padding-top: 30px !important;
+}
+
+.write_btn {
+    display: inline-block;
+    padding: .5em .75em;
+    background-color: #fdd741;
+    color: black;
+    cursor: pointer;
+    border: 1px solid #cacaca;
+    border-radius: .25em;
+    height: 39.2px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0px 15px;
 }
