@@ -23,6 +23,9 @@ Detail
         {% if img.image %}
         <img src="{{ img.image.url }}" id="upload_img_view">
         {% endif %}
+        {% if processed_image %}
+        <img src="data:image/jpeg;base64,{{ processed_image }}" id="upload_img_view">
+        {% endif %}
     </div>
     <div class="right">
         <div class="text">

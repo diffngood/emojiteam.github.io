@@ -71,6 +71,21 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        # 로그 레벨을 설정합니다 (예: 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL')
+        'level': 'INFO',
+    },
+}
+
 ROOT_URLCONF = "mysite.urls"
 
 TEMPLATES = [
