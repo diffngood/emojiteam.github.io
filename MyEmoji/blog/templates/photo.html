@@ -13,9 +13,7 @@ board
     <div class="board_content">
         <br>
         <br>
-        <br>
-        <br>
-        <h3>게시판</h3>
+        <h1>Emoji Sharing Board</h1>
         <hr>
         <div class="search">
             <ul class="board_module_search">
@@ -44,12 +42,12 @@ board
                 </colgroup>
             </table>
             <div
-                style="display: grid; grid-template-columns: 206px 206px 206px 206px; grid-template-rows: 250px 250px 250px;">
+                style="display: grid; grid-template-columns: 220px 220px 220px 220px 220px; grid-template-rows: 300px;">
                 {% for list in page_obj %}
                 <div class="item" style="padding-top: 15px;">
                     <p style="text-align: left; font-size: 0.8em;">
                         <a href="{% url 'photo_detail' list.pk %}" style="text-decoration: none; color: black;">
-                            <img src="{{ list.imgfile.url }}" style="width: 180px; height: 150px;" alt=""> <br>
+                            <img src="{{ list.imgfile.url }}" style="width: 160px; height: 160px;" alt="image"> <br>
                             <span style="font-weight: bold;">{{ list.title }}</span> <br>
                             작성자: {{ list.user }} <br>
                             작성일: {{ list.created_date|date:"Y-m-d" }} <br>
@@ -62,7 +60,7 @@ board
             {% if user.is_authenticated %}
             <div class="write">
                 <input type="button" class="write_btn" name="write_btn" value="글쓰기"
-                    onclick="location.href='{% url 'photo_create' %}'" style="border: 0; outline: 0;">
+                    onclick="location.href=`{% url 'photo_create' %}`" style="border: 0; outline: 0;">
             </div>
             {% endif %}
         </div>
