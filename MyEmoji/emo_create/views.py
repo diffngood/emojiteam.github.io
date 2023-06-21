@@ -1,6 +1,7 @@
 import cv2
 import os
 from django.conf import settings
+import projector_mod
 import pickle
 import base64
 import io
@@ -145,8 +146,10 @@ def process_style(request):
         # 선택한 스타일에 따라 실행할 pkl 파일 경로 설정
         pkl_path = os.path.join(
             settings.BASE_DIR, 'pkl_folder', f'{selected_style}.pkl')
+        img_path = os.path.join(
+            settings.BASE_DIR, 'media/change_images/resized_image.jpg')
         logger.info(f"LOGGER: PKL 경로: {pkl_path}")
-
+        make_image(pkl_path, img_path)
         # pkl 파일 실행
         # with open(pkl_path, 'rb') as f:
         #     model = pickle.load(f)
@@ -155,3 +158,14 @@ def process_style(request):
         # ...
 
         return render(request, 'result.html', {'selected_style': selected_style, 'pkl_path': pkl_path})
+
+
+def make_image(pkl_path, img_path):
+    projector_mod.run_projection(
+        network_pkl=pkl_path,
+        target_fname=img_path,
+        outdir='out',
+        save_video=False,
+        seed=303,
+        num_steps=100
+    )
