@@ -154,4 +154,4 @@ def process_style(request):
         # 추가적인 처리 로직 작성
         # ...
 
-        return render(request, 'guide.html', {'selected_style': selected_style})
+        return render(request, 'result.html', {'selected_style': selected_style, 'pkl_path': pkl_path})
