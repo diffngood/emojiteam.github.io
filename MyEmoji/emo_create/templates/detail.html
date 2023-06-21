@@ -20,11 +20,12 @@ Detail
 
 <div class="container">
     <div class="left">
-        {% if img.image %}
-        <img src="{{ img.image.url }}" id="upload_img_view">
-        {% endif %}
-        {% if processed_image %}
-        <img src="data:image/jpeg;base64,{{ processed_image }}" id="upload_img_view">
+        <!-- {% if img.image %}
+        <img src="{{ img.image.url }}" id="upload_img_view" style="height:100px;width:100px;">
+        {% endif %} -->
+        {% if processed_image_path %}
+        <h2>Pictures Used</h2>
+        <img src="{{ processed_image_path }}" id="upload_img_view" style="height: 256px;width: 256px;margin-top: 20px;">
         {% endif %}
     </div>
     <div class="right">
@@ -35,26 +36,27 @@ Detail
             <h5>이미지 상대경로: {{img.image.url}}</h5><br>
             <h5>이미지 절대경로: {{img.image.path}}</h5><br>
             {% endif %} -->
-            <form action="#">
+            <form method="post" action="{% url 'process_style' %}">
+                {% csrf_token %}
                 <h2>Select a style</h2>
                 <div class="inputGroup">
-                    <input id="radio1" name="radio" type="radio" checked />
+                    <input id="radio1" name="radio" type="radio" value="zombie" checked />
                     <label for="radio1">Style 1</label>
                 </div>
                 <div class="inputGroup">
-                    <input id="radio2" name="radio" type="radio" />
+                    <input id="radio2" name="radio" type="radio" value="metfaces" />
                     <label for="radio2">Style 2</label>
                 </div>
                 <div class="inputGroup">
-                    <input id="radio3" name="radio" type="radio" />
+                    <input id="radio3" name="radio" type="radio" value="cartoon" />
                     <label for="radio3">Style 3</label>
                 </div>
                 <div class="inputGroup">
-                    <input id="radio4" name="radio" type="radio" />
+                    <input id="radio4" name="radio" type="radio" value="afhqdog" />
                     <label for="radio4">Style 4</label>
                 </div>
                 <div class="inputGroup">
-                    <input id="radio5" name="radio" type="radio" />
+                    <input id="radio5" name="radio" type="radio" value="afhqcat" />
                     <label for="radio5">Style 5</label>
                 </div>
                 <input class="create_btn" type="submit" value="이모티콘 생성">

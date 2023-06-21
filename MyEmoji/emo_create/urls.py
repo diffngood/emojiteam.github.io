@@ -10,4 +10,6 @@ urlpatterns = [
     path('upload_img/', upload_img, name='upload_img'),
     path('webcam/', webcam, name='webcam'),
     path('detail/<int:pk>', detail, name='detail'),
+    path('process_style/', process_style, name='process_style'),
+
 ]

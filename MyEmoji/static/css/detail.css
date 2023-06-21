@@ -66,8 +66,7 @@ body {
 }
 
 #upload_img_view {
-    width: calc(100vh - 50vh);
-    height: calc(100vh - 50vh);
+    border: #333 2px solid;
 }
 
 .right {

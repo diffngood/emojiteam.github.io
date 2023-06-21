@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block static %}
-<link rel="stylesheet" href="{% static 'css/guide.css' %}?after">
+<link rel="stylesheet" href="{% static 'css/webcam.css' %}?after">
 {% endblock %}
 
 {% block title %}
@@ -10,7 +10,6 @@ Webcam
 {% endblock %}
 
 {% block content %}
-
 <div>
     <nav class="mainMenu">
         <ul class="create_item">
@@ -29,13 +28,9 @@ Webcam
                 <br>
                 서버에 저장된 이미지는 아래의 리스트를 통해 확인 가능합니다.
             </div>
-            <div>
-                {% if images.image %}
-                {{ image.image.url }}
-                {% for image in images %}
-                <img src="{{ image.image.url }}" width="200" height="150">
-                {% endfor %}
-                {% endif %}
+            <div id="image_container">
+                <!-- 이미지를 렌더링할 태그 추가 -->
+                <img src="" alt="&nbsp;Webcam Image" id="webcam_image">
             </div>
         </div>
     </div>
@@ -45,6 +40,8 @@ Webcam
     const video = document.getElementById('video');
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
+    const imageContainer = document.querySelector("#image_container");
+    const webcamImage = document.querySelector("#webcam_image");
 
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(stream => {
@@ -55,14 +52,10 @@ Webcam
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         context.drawImage(video, 0, 0);
-        canvas.toBlob(blob => {
-            const formData = new FormData();
-            formData.append('camera-image', blob);
-            fetch('/emo_create/webcam/', {
-                method: 'POST',
-                body: formData
-            });
-        });
+        // 캡쳐한 이미지를 base64로 인코딩하여 이미지 소스로 설정
+        const imageDataURL = canvas.toDataURL('image/png');
+        webcamImage.src = imageDataURL;
+        imageContainer.style.display = "block";
     }
 </script>
 <!-- https://zinee-world.tistory.com/551 -->

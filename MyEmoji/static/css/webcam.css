@@ -1,3 +1,5 @@
+/* guide.css */
+
 * {
     box-sizing: border-box;
 }
@@ -55,52 +57,22 @@ body {
     height: calc(100vh - 153px);
 }
 
-.image_container {
-    width: calc(100vh - 29.5vh);
-    height: calc(100vh - 29vh);
+.webcamWrap {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f9f9f9;
 }
 
-.upload_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: dashed 3px #dbdbdb;
-    width: calc(100vh - 35.5vh);
-    height: calc(100vh - 35vh);
+#video {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
 }
 
-.filebox {
-    margin-bottom: 40px;
-}
-
-.filebox label {
-    display: inline-block;
-    padding: .5em .75em;
-    background-color: #fdfdfd;
-    color: #6a6a6a;
-    cursor: pointer;
-    border: 1px solid #cacaca;
-    border-radius: .25em;
-}
-
-#image_file {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
-
-#upload_img_view {
-    width: calc(100vh - 35.75vh);
-    height: calc(100vh - 35.25vh);
-}
-
-.submit_btn {
+.capture_btn {
     display: inline-block;
     padding: .5em .75em;
     background-color: #fdfdfd;
@@ -113,16 +85,18 @@ body {
     margin: 0px 15px;
 }
 
-#upload {
+#image_container {
+    display: none;
+    margin-top: 20px;
+}
+
+#webcam_image {
+    width: 100%;
+    max-width: 500px;
+}
+
+#webcam {
     padding-left: 13px;
     background: #333;
     color: white;
-}
-
-@media screen and (min-width:767px) {
-    .mainMenu ul li a:hover {
-        padding-left: 13px;
-        background: #333;
-        color: white;
-    }
 }
