@@ -14,17 +14,17 @@ Guide
     <nav class="mainMenu">
         <ul class="create_item">
             <li><a href="/emo_create/" id="guide">Guide</a></li>
-            <li><a href="/emo_create/upload_img">Upload a image</a></li>
+            <li><a href="/emo_create/upload_img" id="upload">Upload a image</a></li>
             <li><a href="/emo_create/webcam">WebCam</a></li>
         </ul>
     </nav>
     <div class="container">
         <h1>RESULT PAGE</h1><br>
-        <h3>내가 고른 스타일: {{ selected_style }}</h3><br>
-        <h4>경로: {{ pkl_path }}</h4>
-        <img src="../../static/proj.png" id="upload_img_view" style="height: 256px; width: 256px; margin-top: 20px;">
+        <h3>MY STYLE: {{ selected_style }}</h3><br>
+        <h4>PKL PATH: {{ pkl_path }}</h4>
+        <img src="../../static/proj.png" id="upload_img_view" style="height: 300px; width: 300px; margin-top: 20px;">
         <br>
-        <a href="{% url 'download_image' %}" download>Download Image</a>
+        <a href="{% url 'download_image' %}" id="download_btn" download><span>Download</span></a>
     </div>
 </div>
 {% endblock %}

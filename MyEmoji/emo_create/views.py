@@ -66,10 +66,6 @@ def detail(request, pk):
     # 이미지 처리 함수 호출
     processed_image = process_image(img.image.path)
 
-    # 이미지 변환 및 인코딩
-    # _, buffer = cv2.imencode('.jpg', processed_image)
-    # encoded_image = base64.b64encode(buffer).decode('utf-8')
-
     # 이미지 저장 경로
     processed_image_path = os.path.join(
         '/media/change_images/resized_image.jpg')
@@ -136,15 +132,6 @@ def process_image(image_path):
     except:
         return 'error'
 
-# 테스트
-# def process_image(image_path):
-#     image = cv2.imread(image_path)
-
-#     # 이미지 처리 로직
-#     processed_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-#     return processed_image
-
 
 def process_style(request):
     if request.method == 'POST':
@@ -164,10 +151,6 @@ def process_style(request):
             img = cv2.imread(img_path)
             img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
             cv2.imwrite(img_path, img)
-
-        # pkl 파일 실행
-        # with open(pkl_path, 'rb') as f:
-        #     model = pickle.load(f)
 
         return render(request, 'result.html', {'selected_style': selected_style, 'pkl_path': pkl_path})
 
@@ -206,9 +189,8 @@ def face_detection(image_path):
     except:
         return 'error'
 
+
 # 이미지 다운로드
-
-
 def download_image(request):
     processed_image_path = os.path.join(
         settings.BASE_DIR, 'static/proj.png')
