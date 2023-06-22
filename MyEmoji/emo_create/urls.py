@@ -11,5 +11,5 @@ urlpatterns = [
     path('webcam/', webcam, name='webcam'),
     path('detail/<int:pk>', detail, name='detail'),
     path('process_style/', process_style, name='process_style'),
-
+    path('download_image/', download_image, name='download_image'),
 ]

@@ -1,7 +1,8 @@
 import cv2
 import os
 from django.conf import settings
-import projector_mod
+from django.contrib import messages
+# import projector_mod
 import pickle
 import base64
 import io
@@ -54,6 +55,13 @@ def webcam(request):
 
 def detail(request, pk):
     img = Img.objects.get(id=pk)
+    check = face_detection(img.image.path)
+    if(check == 'many faces recognized'):
+        messages.error(request, '얼굴인식이 2개 이상 존재합니다.')
+        return redirect('upload_img')
+    elif(check == 'cognitive failure'):
+        messages.error(request, '얼굴인식이 되지 않습니다.')
+        return redirect('upload_img')
 
     # 이미지 처리 함수 호출
     processed_image = process_image(img.image.path)
@@ -74,7 +82,6 @@ def detail(request, pk):
     if request.method == 'POST':
         selected_style = request.POST.get('radio')
         # 선택한 스타일 값을 기반으로 작업 수행
-        # 예를 들어, 선택한 스타일을 템플릿에 전달하여 렌더링할 수 있습니다.
         # return render(request, 'result.html', {'selected_style': selected_style})
         logger.info(f"LOGGER: selected_style: {selected_style}")
         return render(request, 'detail.html', {'img': img, 'processed_image_path': processed_image_path})
@@ -149,23 +156,64 @@ def process_style(request):
         img_path = os.path.join(
             settings.BASE_DIR, 'media/change_images/resized_image.jpg')
         logger.info(f"LOGGER: PKL 경로: {pkl_path}")
-        make_image(pkl_path, img_path)
+        # make_image(pkl_path, img_path)
+
+        img_path = os.path.join(
+            settings.BASE_DIR, 'static/proj.png')
+        if(selected_style == 'cartoon'):
+            img = cv2.imread(img_path)
+            img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+            cv2.imwrite(img_path, img)
+
         # pkl 파일 실행
         # with open(pkl_path, 'rb') as f:
         #     model = pickle.load(f)
 
-        # 추가적인 처리 로직 작성
-        # ...
-
         return render(request, 'result.html', {'selected_style': selected_style, 'pkl_path': pkl_path})
 
 
-def make_image(pkl_path, img_path):
-    projector_mod.run_projection(
-        network_pkl=pkl_path,
-        target_fname=img_path,
-        outdir='out',
-        save_video=False,
-        seed=303,
-        num_steps=100
-    )
+# def make_image(pkl_path, img_path):
+#     projector_mod.run_projection(
+#         network_pkl=pkl_path,
+#         target_fname=img_path,
+#         outdir='out',
+#         save_video=False,
+#         seed=303,
+#         num_steps=100
+#     )
+
+def face_detection(image_path):
+    try:
+        # 이미지 로드
+        image = cv2.imread(image_path)
+        # 그레이 스케일 변환
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        gray = cv2.equalizeHist(gray)
+        # 얼굴 인식 분류기 생성
+        face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
+        # 얼굴 인식 적용
+        faces = face_cascade.detectMultiScale(
+            gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+        # 얼굴 개수 확인
+        if len(faces) == 1:
+            (x, y, w, h) = faces[0]
+            cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            return 'success'
+        elif len(faces) > 1:
+            return 'many faces recognized'
+        else:
+            return 'cognitive failure'
+    except:
+        return 'error'
+
+# 이미지 다운로드
+
+
+def download_image(request):
+    processed_image_path = os.path.join(
+        settings.BASE_DIR, 'static/proj.png')
+    with open(processed_image_path, 'rb') as f:
+        response = HttpResponse(f.read(), content_type="image/jpeg")
+        response['Content-Disposition'] = 'attachment; filename="processed_image.jpg"'
+        return response
+    return render(request, 'detail.html', {'img': img, 'processed_image_path': processed_image_path})

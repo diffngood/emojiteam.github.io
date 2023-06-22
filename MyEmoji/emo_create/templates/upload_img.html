@@ -22,6 +22,13 @@ Upload_img
     <div class="upload_box">
         <div id="image_container">
             <img src="" alt="&nbsp;Files to upload" id="upload_img_view">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
         </div>
     </div>
     <br>
