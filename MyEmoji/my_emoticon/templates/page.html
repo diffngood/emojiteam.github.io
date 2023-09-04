@@ -1,0 +1,30 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+{% block static %}
+<link rel="stylesheet" href="{% static 'css/my_emoticon.css' %}">
+{% endblock %}
+
+{% block title %}
+My Emoticon
+{% endblock %}
+
+{% block content %}
+<div class="main_box">
+    <div class="image_box">
+        <img src={{ style_img_path_0 }} class="cre_images">
+        <div class="cre_images"></div>
+        <div class="cre_images"></div>
+        <div class="cre_images"></div>
+        <div class="cre_images"></div>
+    </div>
+    <div class="download_box">
+        <a href="" class="download_btn" download><span>Download</span></a>
+        <a href="" class="download_btn" download><span>Download</span></a>
+        <a href="" class="download_btn" download><span>Download</span></a>
+        <a href="" class="download_btn" download><span>Download</span></a>
+        <a href="" class="download_btn" download><span>Download</span></a>
+    </div>
+</div>
+
+{% endblock %}

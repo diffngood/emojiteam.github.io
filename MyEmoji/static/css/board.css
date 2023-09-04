@@ -1,3 +1,7 @@
+#board {
+    color: white;
+}
+
 .board_container {
     margin-top: calc(84px);
     display: flex;

@@ -1,0 +1,138 @@
+/* my_emotiocn.css */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#my_emoticon {
+    color: white;
+}
+
+.main_box {
+    margin-top: calc(84px + 75px - 11px + 5px);
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.download_box,
+.image_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.cre_images {
+    width: 270px;
+    height: 270px;
+    border: 1px solid #333;
+}
+
+.download_btn {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    transition: 0.3s ease-out;
+}
+
+.download_btn span:before {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-top: 2px solid #fdd741;
+    border-left: 2px solid #fdd741;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.download_btn span:after {
+    width: 6px;
+    height: 6px;
+    background: transparent;
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-right: 2px solid #fdd741;
+    border-bottom: 2px solid #fdd741;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.download_btn:before {
+    width: 6px;
+    height: 6px;
+    background: transparent;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-right: 2px solid #fdd741;
+    border-top: 2px solid #fdd741;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.download_btn:after {
+    width: 6px;
+    height: 6px;
+    background: transparent;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-left: 2px solid #fdd741;
+    border-bottom: 2px solid #fdd741;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.download_btn:hover {
+    color: #fdd741;
+    border: 0px;
+
+}
+
+.download_btn:hover:before {
+    opacity: 1;
+    right: 5px;
+    top: 5px;
+}
+
+.download_btn:hover:after {
+    opacity: 1;
+    left: 5px;
+    bottom: 5px;
+}
+
+.download_btn:hover span:before {
+    opacity: 1;
+    left: 5px;
+    top: 5px;
+}
+
+.download_btn:hover span:after {
+    opacity: 1;
+    right: 5px;
+    bottom: 5px;
+}

@@ -2,6 +2,7 @@ import cv2
 import os
 from django.conf import settings
 from django.contrib import messages
+import run
 # import projector_mod
 import pickle
 import base64
@@ -13,6 +14,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.db import connection
 
 
 logger = logging.getLogger(__name__)
@@ -27,12 +29,34 @@ def guide(request):
 
 @login_required
 def upload_img(request):
+
     if request.method == "POST":
         post = Img()
         post.date = timezone.now()
         post.image = request.FILES['image']
         post.save()
         logger.info("LOGGER: Upload_img successed")
+
+        # 현재 로그인한 사용자의 아이디를 가져오기
+        user_id = request.user.username
+
+        # SQL 쿼리 실행
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT user_id FROM styled_images WHERE user_id = %s", [user_id])
+            user_id_exists = cursor.fetchone()
+
+            if user_id_exists:  # 이미 user_id가 존재하는 경우
+                cursor.execute(
+                    "SELECT * FROM auth_user WHERE username = %s", [user_id])
+                results = [row[3] for row in cursor.fetchall()]
+
+                logger.info(f"LOGGER: test: {results}")
+
+            else:  # user_id가 존재하지 않는 경우 (user_id를 추가)
+                with connection.cursor() as cursor:
+                    cursor.execute(
+                        "INSERT INTO styled_images (user_id) VALUES (%s)", [user_id])
 
         return redirect('/emo_create/detail/'+str(post.id), {'post': post})
     else:
@@ -65,6 +89,10 @@ def detail(request, pk):
 
     # 이미지 처리 함수 호출
     processed_image = process_image(img.image.path)
+
+    # 이미지 변환 및 인코딩
+    # _, buffer = cv2.imencode('.jpg', processed_image)
+    # encoded_image = base64.b64encode(buffer).decode('utf-8')
 
     # 이미지 저장 경로
     processed_image_path = os.path.join(
@@ -125,12 +153,23 @@ def process_image(image_path):
             resized = cv2.resize(
                 cropped, (image.shape[1], image.shape[0]), interpolation=cv2.INTER_CUBIC)
             # resized_img = cv2.resize(resized, (w, h))
+            file_path = os.path.join(
+            settings.BASE_DIR, 'media/change_images/resized_image.jpg')
 
             cv2.imwrite(
-                "C:\\Users\\82103\\Documents\\GitHub\\emojiteam.github.io\\emojiteam.github.io\\MyEmoji\\media\\change_images\\resized_image.jpg", resized)
+                file_path, resized)
             return resized
     except:
         return 'error'
+
+# 테스트
+# def process_image(image_path):
+#     image = cv2.imread(image_path)
+
+#     # 이미지 처리 로직
+#     processed_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+#     return processed_image
 
 
 def process_style(request):
@@ -139,18 +178,22 @@ def process_style(request):
 
         # 선택한 스타일에 따라 실행할 pkl 파일 경로 설정
         pkl_path = os.path.join(
-            settings.BASE_DIR, 'pkl_folder', f'{selected_style}.pkl')
+            settings.BASE_DIR, 'pkls', f'{selected_style}.pkl')
         img_path = os.path.join(
             settings.BASE_DIR, 'media/change_images/resized_image.jpg')
         logger.info(f"LOGGER: PKL 경로: {pkl_path}")
-        # make_image(pkl_path, img_path)
-
+        #make_image(pkl_path, img_path)
+        make_image2(img_path)
         img_path = os.path.join(
             settings.BASE_DIR, 'static/proj.png')
         if(selected_style == 'cartoon'):
             img = cv2.imread(img_path)
             img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
             cv2.imwrite(img_path, img)
+
+        # pkl 파일 실행
+        # with open(pkl_path, 'rb') as f:
+        #     model = pickle.load(f)
 
         return render(request, 'result.html', {'selected_style': selected_style, 'pkl_path': pkl_path})
 
@@ -159,11 +202,22 @@ def process_style(request):
 #     projector_mod.run_projection(
 #         network_pkl=pkl_path,
 #         target_fname=img_path,
-#         outdir='out',
+#         outdir='static',
 #         save_video=False,
 #         seed=303,
 #         num_steps=100
 #     )
+
+def make_image2(img_path):
+    run.run_projection(
+        mod='face_paint_512_v1',
+        input_path=img_path,
+        output_path='static/proj.png'
+        #celeba_distill
+        #paprika
+        #face_paint_512_v1
+        #face_paint_512_v2
+    )
 
 def face_detection(image_path):
     try:
@@ -199,3 +253,20 @@ def download_image(request):
         response['Content-Disposition'] = 'attachment; filename="processed_image.jpg"'
         return response
     return render(request, 'detail.html', {'img': img, 'processed_image_path': processed_image_path})
+
+
+def update_styled_image_data(user_id, png_path):
+    with connection.cursor() as cursor:
+        sql = "UPDATE styled_images SET styled_image_path0 = %s WHERE user_id = %s"
+        cursor.execute(sql, [png_path, user_id])
+
+def make_image2(img_path):
+    run.run_projection(
+        mod='face_paint_512_v1',
+        input_path=img_path,
+        output_path='static/proj.png'
+        #celeba_distill
+        #paprika
+        #face_paint_512_v1
+        #face_paint_512_v2
+    )

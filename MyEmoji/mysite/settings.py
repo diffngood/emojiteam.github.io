@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'blog',
     'emo_create',
     'chat',
+    'my_emoticon',
 ]
 
 LOGIN_URL = '/login/'

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from PIL import Image
 import os
 
@@ -43,3 +44,13 @@ class CameraImage(models.Model):
 
             # 모델 저장
             self.save(update_fields=['image'])
+
+
+class StyledImage(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    original_image_path = models.CharField(max_length=255)
+    styled_image_path = models.CharField(max_length=255)
+    chosen_style = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"Styled image for {self.user.username}"

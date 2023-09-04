@@ -32,4 +32,5 @@ urlpatterns = [
     path('emo_create/', include('emo_create.urls')),
     path('emo_board/', include('blog.urls')),
     path('chat/', include('chat.urls')),
+    path('my_emoticon/', include('my_emoticon.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
