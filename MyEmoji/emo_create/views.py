@@ -107,8 +107,8 @@ def detail(request, pk):
         selected_style = request.POST.get('radio')
         # 선택한 스타일 값을 기반으로 작업 수행
         # return render(request, 'result.html', {'selected_style': selected_style})
-        logger.info(f"LOGGER: selected_style: {selected_style}")
-        return render(request, 'detail.html', {'img': img, 'processed_image_path': processed_image_path})
+        
+        return render(request, 'detail.html', {'img': img, 'processed_image_path': processed_image_path, 'selected_style': selected_style})
 
     return render(request, 'detail.html', {'img': img, 'processed_image_path': processed_image_path})
 
@@ -181,21 +181,33 @@ def process_style(request):
             settings.BASE_DIR, 'pkls', f'{selected_style}.pkl')
         img_path = os.path.join(
             settings.BASE_DIR, 'media/change_images/resized_image.jpg')
+        logger.info(f"LOGGER: selected_style: {selected_style}")
         logger.info(f"LOGGER: PKL 경로: {pkl_path}")
-        #make_image(pkl_path, img_path)
-        make_image2(img_path)
+        if selected_style == 'Face Portrait v1' or selected_style == 'Face Portrait v2' or selected_style == 'Webtoon Face' or selected_style == 'Paprika Animation':
+            logger.info(f"LOGGER: make_image 2 실행")
+            make_image2(request, img_path)
+        else:
+            logger.info(f"LOGGER: make_image 1 실행")
+            # make_image(pkl_path, img_path)
+            
         img_path = os.path.join(
             settings.BASE_DIR, 'static/proj.png')
         if(selected_style == 'cartoon'):
             img = cv2.imread(img_path)
-            img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+            # img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
             cv2.imwrite(img_path, img)
 
         # pkl 파일 실행
         # with open(pkl_path, 'rb') as f:
         #     model = pickle.load(f)
-
-        return render(request, 'result.html', {'selected_style': selected_style, 'pkl_path': pkl_path})
+        user_id = request.user.username
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT count FROM styled_images WHERE user_id = %s", [user_id])
+            count_tuple = cursor.fetchone()
+            count = count_tuple[0]
+            count = count - 1
+        return render(request, 'result.html', {'selected_style': selected_style, 'pkl_path': pkl_path, 'user_id': user_id, 'count': count})
 
 
 # def make_image(pkl_path, img_path):
@@ -208,16 +220,65 @@ def process_style(request):
 #         num_steps=100
 #     )
 
-def make_image2(img_path):
-    run.run_projection(
-        mod='face_paint_512_v1',
-        input_path=img_path,
-        output_path='static/proj.png'
-        #celeba_distill
-        #paprika
-        #face_paint_512_v1
-        #face_paint_512_v2
-    )
+def make_image2(request, img_path):
+    #celeba_distill
+    #paprika
+    #face_paint_512_v1
+    #face_paint_512_v2
+    user_id = request.user.username
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "SELECT count FROM styled_images WHERE user_id = %s", [user_id])
+        count_tuple = cursor.fetchone()
+        count = count_tuple[0]
+    logger.info(f"LOGGER: Count: {count}")
+    output_path=''
+    if request.method == 'POST':
+        selected_style = request.POST.get('radio')
+        
+        if(selected_style == 'Face Portrait v1'):
+            run.run_projection(
+                mod='face_paint_512_v1',
+                input_path=img_path,
+                output_path='static/{}_proj_{}.png'.format(user_id, count)
+            )
+            count = count + 1
+            with connection.cursor() as cursor:
+                sql = "UPDATE styled_images SET count = %s WHERE user_id = %s"
+                cursor.execute(sql, [count, user_id]) 
+        elif(selected_style == 'Face Portrait v2'):
+            run.run_projection(
+                mod='face_paint_512_v2',
+                input_path=img_path,
+                output_path='static/{}_proj_{}.png'.format(user_id, count)
+            )
+            count = count + 1
+            with connection.cursor() as cursor:
+                sql = "UPDATE styled_images SET count = %s WHERE user_id = %s"
+                cursor.execute(sql, [count, user_id])
+        elif(selected_style == 'Webtoon Face'):
+            run.run_projection(
+                mod='celeba_distill',
+                input_path=img_path,
+                output_path='static/{}_proj_{}.png'.format(user_id, count)
+            )
+            count = count + 1
+            with connection.cursor() as cursor:
+                sql = "UPDATE styled_images SET count = %s WHERE user_id = %s"
+                cursor.execute(sql, [count, user_id])
+        elif(selected_style == 'Paprika Animation'):
+            run.run_projection(
+                mod='paprika',
+                input_path=img_path,
+                output_path='static/{}_proj_{}.png'.format(user_id, count)
+            )
+            count = count + 1
+            with connection.cursor() as cursor:
+                sql = "UPDATE styled_images SET count = %s WHERE user_id = %s"
+                cursor.execute(sql, [count, user_id])
+    png_path_count = count - 1
+    png_path=f'\static/{user_id}_proj_{png_path_count}.png'
+    update_styled_image_data(user_id, png_path, png_path_count)
 
 def face_detection(image_path):
     try:
@@ -246,8 +307,15 @@ def face_detection(image_path):
 
 # 이미지 다운로드
 def download_image(request):
+    user_id = request.user.username
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "SELECT count FROM styled_images WHERE user_id = %s", [user_id])
+        count_tuple = cursor.fetchone()
+        count = count_tuple[0]
+        count = count - 1
     processed_image_path = os.path.join(
-        settings.BASE_DIR, 'static/proj.png')
+        settings.BASE_DIR, f'static/{user_id}_proj_{count}.png')
     with open(processed_image_path, 'rb') as f:
         response = HttpResponse(f.read(), content_type="image/jpeg")
         response['Content-Disposition'] = 'attachment; filename="processed_image.jpg"'
@@ -255,18 +323,27 @@ def download_image(request):
     return render(request, 'detail.html', {'img': img, 'processed_image_path': processed_image_path})
 
 
-def update_styled_image_data(user_id, png_path):
-    with connection.cursor() as cursor:
-        sql = "UPDATE styled_images SET styled_image_path0 = %s WHERE user_id = %s"
-        cursor.execute(sql, [png_path, user_id])
-
-def make_image2(img_path):
-    run.run_projection(
-        mod='face_paint_512_v1',
-        input_path=img_path,
-        output_path='static/proj.png'
-        #celeba_distill
-        #paprika
-        #face_paint_512_v1
-        #face_paint_512_v2
-    )
+def update_styled_image_data(user_id, png_path, png_path_count):
+    
+    png_path_count_1 = png_path_count % 5
+    if png_path_count == 1 or png_path_count_1 == 1:
+        with connection.cursor() as cursor:
+            sql = "UPDATE styled_images SET styled_image_path1 = %s WHERE user_id = %s"
+            cursor.execute(sql, [png_path, user_id])
+    elif png_path_count == 2 or png_path_count_1 == 2:
+        with connection.cursor() as cursor:
+            sql = "UPDATE styled_images SET styled_image_path2 = %s WHERE user_id = %s"
+            cursor.execute(sql, [png_path, user_id])
+    elif png_path_count == 3 or png_path_count_1 == 3:
+        with connection.cursor() as cursor:
+            sql = "UPDATE styled_images SET styled_image_path3 = %s WHERE user_id = %s"
+            cursor.execute(sql, [png_path, user_id])
+    elif png_path_count == 4 or png_path_count_1 == 4:
+        with connection.cursor() as cursor:
+            sql = "UPDATE styled_images SET styled_image_path4 = %s WHERE user_id = %s"
+            cursor.execute(sql, [png_path, user_id])
+    else:
+        with connection.cursor() as cursor:
+            logger.info(f"LOGGER: 마이 이모티콘꺼: {png_path}")
+            sql = "UPDATE styled_images SET styled_image_path0 = %s WHERE user_id = %s"
+            cursor.execute(sql, [png_path, user_id])

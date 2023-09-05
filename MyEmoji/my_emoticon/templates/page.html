@@ -12,18 +12,38 @@ My Emoticon
 {% block content %}
 <div class="main_box">
     <div class="image_box">
-        <img src={{ style_img_path_0 }} class="cre_images">
-        <div class="cre_images"></div>
-        <div class="cre_images"></div>
-        <div class="cre_images"></div>
-        <div class="cre_images"></div>
+        {% if style_img_path_0 %}
+            <img src="{{ style_img_path_0 }}" class="cre_images">
+        {% endif %}
+        {% if style_img_path_1 %}
+            <img src={{ style_img_path_1 }} class="cre_images">
+        {% endif %}
+        {% if style_img_path_2 %}
+            <img src={{ style_img_path_2 }} class="cre_images">
+        {% endif %}
+        {% if style_img_path_3 %}
+            <img src={{ style_img_path_3 }} class="cre_images">
+        {% endif %}
+        {% if style_img_path_4 %}
+            <img src={{ style_img_path_4 }} class="cre_images">
+        {% endif %}
     </div>
     <div class="download_box">
-        <a href="" class="download_btn" download><span>Download</span></a>
-        <a href="" class="download_btn" download><span>Download</span></a>
-        <a href="" class="download_btn" download><span>Download</span></a>
-        <a href="" class="download_btn" download><span>Download</span></a>
-        <a href="" class="download_btn" download><span>Download</span></a>
+        {% if style_img_path_0 %}
+            <a href="" class="download_btn" download><span>Download</span></a>
+        {% endif %}
+        {% if style_img_path_1 %}
+            <a href="" class="download_btn" download><span>Download</span></a>
+        {% endif %}
+        {% if style_img_path_2 %}
+            <a href="" class="download_btn" download><span>Download</span></a>
+        {% endif %}
+        {% if style_img_path_3 %}
+            <a href="" class="download_btn" download><span>Download</span></a>
+        {% endif %}
+        {% if style_img_path_4 %}
+            <a href="" class="download_btn" download><span>Download</span></a>
+        {% endif %}
     </div>
 </div>
 

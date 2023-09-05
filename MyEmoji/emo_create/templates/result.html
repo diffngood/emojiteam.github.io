@@ -22,7 +22,7 @@ Guide
         <h1>RESULT PAGE</h1><br>
         <h3>MY STYLE: {{ selected_style }}</h3><br>
         <h4>PKL PATH: {{ pkl_path }}</h4>
-        <img src="../../static/proj.png" id="upload_img_view" style="height: 300px; width: 300px; margin-top: 20px;">
+        <img src="../../static/{{ user_id }}_proj_{{ count }}.png" id="upload_img_view" style="height: 300px; width: 300px; margin-top: 20px;">
         <br>
         <a href="{% url 'download_image' %}" id="download_btn" download><span>Download</span></a>
     </div>
