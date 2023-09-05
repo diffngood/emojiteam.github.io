@@ -15,6 +15,7 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.db import connection
+from django.http import JsonResponse
 
 
 logger = logging.getLogger(__name__)
@@ -173,9 +174,10 @@ def process_image(image_path):
 
 
 def process_style(request):
+    user_id = request.user.username
+
     if request.method == 'POST':
         selected_style = request.POST.get('radio')
-
         # 선택한 스타일에 따라 실행할 pkl 파일 경로 설정
         pkl_path = os.path.join(
             settings.BASE_DIR, 'pkls', f'{selected_style}.pkl')
@@ -185,7 +187,7 @@ def process_style(request):
         logger.info(f"LOGGER: PKL 경로: {pkl_path}")
         if selected_style == 'Face Portrait v1' or selected_style == 'Face Portrait v2' or selected_style == 'Webtoon Face' or selected_style == 'Paprika Animation':
             logger.info(f"LOGGER: make_image 2 실행")
-            make_image2(request, img_path)
+            make_image2(request, img_path, user_id)
         else:
             logger.info(f"LOGGER: make_image 1 실행")
             # make_image(pkl_path, img_path)
@@ -200,24 +202,34 @@ def process_style(request):
         # pkl 파일 실행
         # with open(pkl_path, 'rb') as f:
         #     model = pickle.load(f)
-        user_id = request.user.username
         with connection.cursor() as cursor:
             cursor.execute(
                 "SELECT count FROM styled_images WHERE user_id = %s", [user_id])
             count_tuple = cursor.fetchone()
             count = count_tuple[0]
-            count = count - 1
-        return render(request, 'result.html', {'selected_style': selected_style, 'pkl_path': pkl_path, 'user_id': user_id, 'count': count})
+            img_count = count - 1
+        return render(request, 'result.html', {'selected_style': selected_style, 'pkl_path': pkl_path, 'user_id': user_id, 'img_count': img_count})
 
 
-# def make_image(pkl_path, img_path):
+# def make_image(pkl_path, img_path, user_id):
+#     with connection.cursor() as cursor:
+#         cursor.execute(
+#             "SELECT count FROM styled_images WHERE user_id = %s", [user_id])
+#         count_tuple = cursor.fetchone()
+#         count = count_tuple[0]
+#         save_path='static/{}_proj_{}.png'.format(user_id, count)
+#         count = count + 1
+#         with connection.cursor() as cursor:
+#             sql = "UPDATE styled_images SET count = %s WHERE user_id = %s"
+#             cursor.execute(sql, [count, user_id]) 
 #     projector_mod.run_projection(
 #         network_pkl=pkl_path,
 #         target_fname=img_path,
 #         outdir='static',
 #         save_video=False,
 #         seed=303,
-#         num_steps=100
+#         num_steps=100,
+#         savedir=save_path
 #     )
 
 def make_image2(request, img_path):
@@ -321,6 +333,9 @@ def download_image(request):
         response['Content-Disposition'] = 'attachment; filename="processed_image.jpg"'
         return response
     return render(request, 'detail.html', {'img': img, 'processed_image_path': processed_image_path})
+
+def loading(request):
+    return render(request, 'loading.html')
 
 
 def update_styled_image_data(user_id, png_path, png_path_count):

@@ -12,4 +12,5 @@ urlpatterns = [
     path('detail/<int:pk>', detail, name='detail'),
     path('process_style/', process_style, name='process_style'),
     path('download_image/', download_image, name='download_image'),
+    path('loading/', loading, name='loading'),
 ]

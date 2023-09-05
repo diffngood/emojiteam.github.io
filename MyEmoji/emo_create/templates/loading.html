@@ -1,0 +1,38 @@
+{% load static %}
+
+{% block static %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}
+
+{% block title %}
+Loading
+{% endblock %}
+
+{% block content %}
+<br><br><br><br><br>
+<h2>loading...</h2>
+
+
+<script>
+    // 비동기 요청을 보냅니다.
+    $.ajax({
+        type: "POST",
+        url: "{% url 'process_style' %}",
+        data: {
+            csrfmiddlewaretoken: csrfToken,
+            radio: selected_style,
+        },
+        success: function (data) {
+            // 작업이 완료되면 결과 페이지로 이동하거나 업데이트
+            if (data.success) {
+                window.location.href = "/your_url_path/result.html";  // 결과 페이지 URL로 이동
+            }
+        },
+        error: function (error) {
+            // 오류 처리를 여기에 추가할 수 있습니다.
+        }
+    });
+</script>
+
+
+{% endblock %}

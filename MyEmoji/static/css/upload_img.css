@@ -8,6 +8,18 @@ body {
     padding: 0;
 }
 
+#canvas-container {
+    position: relative;
+}
+
+#canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
 #create {
     color: white;
 }
@@ -55,7 +67,29 @@ body {
     height: calc(100vh - 153px);
 }
 
+.result_container {
+    z-index: 2;
+    margin-top: calc(84px + 75px - 20px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: calc(100vh - 140px);
+}
+
+.img_container {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 40%;
+    height: calc(100vh - 140px);
+}
+
 .image_container {
+    z-index: 2;
     width: calc(100vh - 29.5vh);
     height: calc(100vh - 29vh);
 }
@@ -100,6 +134,7 @@ body {
     width: calc(100vh - 50vh);
     /* width: calc(100vh - 35.75vh); */
     height: calc(100vh - 35.25vh);
+    z-index: 2;
 }
 
 .submit_btn {
@@ -129,6 +164,7 @@ body {
     overflow: hidden;
     display: inline-block;
     transition: 0.3s ease-out;
+    background-color: white;
 }
 
 #download_btn span:before {
@@ -145,6 +181,7 @@ body {
     -moz-transition: 0.3s;
     transition: 0.3s;
     opacity: 0;
+    z-index: 2;
 }
 
 #download_btn span:after {
@@ -161,6 +198,7 @@ body {
     -moz-transition: 0.3s;
     transition: 0.3s;
     opacity: 0;
+    z-index: 2;
 }
 
 #download_btn:before {
@@ -177,6 +215,7 @@ body {
     -moz-transition: 0.3s;
     transition: 0.3s;
     opacity: 0;
+    z-index: 2;
 }
 
 #download_btn:after {
@@ -193,11 +232,13 @@ body {
     -moz-transition: 0.3s;
     transition: 0.3s;
     opacity: 0;
+    z-index: 2;
 }
 
 #download_btn:hover {
     color: #fdd741;
     border: 0px;
+    z-index: 2;
 
 }
 
@@ -205,24 +246,28 @@ body {
     opacity: 1;
     right: 5px;
     top: 5px;
+    z-index: 2;
 }
 
 #download_btn:hover:after {
     opacity: 1;
     left: 5px;
     bottom: 5px;
+    z-index: 2;
 }
 
 #download_btn:hover span:before {
     opacity: 1;
     left: 5px;
     top: 5px;
+    z-index: 2;
 }
 
 #download_btn:hover span:after {
     opacity: 1;
     right: 5px;
     bottom: 5px;
+    z-index: 2;
 }
 
 @media screen and (min-width:767px) {
