@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #fac240 !important;
     color: white !important;

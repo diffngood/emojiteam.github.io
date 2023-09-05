@@ -11,40 +11,71 @@ My Emoticon
 
 {% block content %}
 <div class="main_box">
-    <div class="image_box">
+
+    <h1 style="text-align: center;">My Create Emoji</h1>
+    <br>
+    <h4 style="text-align: center; color: gray;">가장 최근에 생성한 이모지 5개 리스트</h4>
+    <br><br>
+
+    <div class="grid-container">
         {% if style_img_path_0 %}
-            <img src="{{ style_img_path_0 }}" class="cre_images">
+        <article class="location-listing">
+            <a class="location-title" href="{% url 'download_image_0' %}" class="download_btn" download>
+                Download </a>
+            <div class="location-image">
+                <a href="#">
+                    <img width="300" height="169" src={{ style_img_path_0 }} alt="image0"> </a>
+            </div>
+        </article>
         {% endif %}
+
         {% if style_img_path_1 %}
-            <img src={{ style_img_path_1 }} class="cre_images">
+        <article class="location-listing">
+            <a class="location-title" href="{% url 'download_image_1' %}" class="download_btn" download>
+                Download </a>
+            <div class="location-image">
+                <a href="#">
+                    <img width="300" height="169" src={{ style_img_path_1 }} alt="image1"> </a>
+            </div>
+        </article>
         {% endif %}
+
         {% if style_img_path_2 %}
-            <img src={{ style_img_path_2 }} class="cre_images">
+        <article class="location-listing">
+            <a class="location-title" href="{% url 'download_image_2' %}" class="download_btn" download>
+                Download </a>
+            <div class="location-image">
+                <a href="#">
+                    <img width="300" height="169" src={{ style_img_path_2 }} alt="image2">
+                </a>
+            </div>
+        </article>
         {% endif %}
+
         {% if style_img_path_3 %}
-            <img src={{ style_img_path_3 }} class="cre_images">
+        <article class="location-listing">
+            <a class="location-title" href="{% url 'download_image_3' %}" class="download_btn" download>
+                Download </a>
+            <div class="location-image">
+                <a href="#">
+                    <img width="300" height="169" src={{ style_img_path_3 }} alt="image3">
+                </a>
+            </div>
+        </article>
         {% endif %}
+
         {% if style_img_path_4 %}
-            <img src={{ style_img_path_4 }} class="cre_images">
+        <article class="location-listing">
+            <a class="location-title" href="{% url 'download_image_4' %}" class="download_btn" download>
+                Download </a>
+            <div class="location-image">
+                <a href="#">
+                    <img width="300" height="169" src={{ style_img_path_4 }} alt="image4">
+                </a>
+            </div>
+        </article>
         {% endif %}
-    </div>
-    <div class="download_box">
-        {% if style_img_path_0 %}
-            <a href="" class="download_btn" download><span>Download</span></a>
-        {% endif %}
-        {% if style_img_path_1 %}
-            <a href="" class="download_btn" download><span>Download</span></a>
-        {% endif %}
-        {% if style_img_path_2 %}
-            <a href="" class="download_btn" download><span>Download</span></a>
-        {% endif %}
-        {% if style_img_path_3 %}
-            <a href="" class="download_btn" download><span>Download</span></a>
-        {% endif %}
-        {% if style_img_path_4 %}
-            <a href="" class="download_btn" download><span>Download</span></a>
-        {% endif %}
-    </div>
+    </div><!-- end grid container -->
 </div>
 
 {% endblock %}

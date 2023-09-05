@@ -187,10 +187,10 @@ def process_style(request):
         logger.info(f"LOGGER: PKL 경로: {pkl_path}")
         if selected_style == 'Face Portrait v1' or selected_style == 'Face Portrait v2' or selected_style == 'Webtoon Face' or selected_style == 'Paprika Animation':
             logger.info(f"LOGGER: make_image 2 실행")
-            make_image2(request, img_path, user_id)
+            make_image2(request, img_path)
         else:
             logger.info(f"LOGGER: make_image 1 실행")
-            # make_image(pkl_path, img_path)
+            # make_image(pkl_path, img_path, user_id)
             
         img_path = os.path.join(
             settings.BASE_DIR, 'static/proj.png')
@@ -218,6 +218,7 @@ def process_style(request):
 #         count_tuple = cursor.fetchone()
 #         count = count_tuple[0]
 #         save_path='static/{}_proj_{}.png'.format(user_id, count)
+#         png_path = '\static/{}_proj_{}.png'.format(user_id, count)
 #         count = count + 1
 #         with connection.cursor() as cursor:
 #             sql = "UPDATE styled_images SET count = %s WHERE user_id = %s"
@@ -229,8 +230,10 @@ def process_style(request):
 #         save_video=False,
 #         seed=303,
 #         num_steps=100,
-#         savedir=save_path
 #     )
+#     os.rename('static/proj.png', save_path)
+#     png_path_count = count - 1
+#     update_styled_image_data(user_id, png_path, png_path_count)
 
 def make_image2(request, img_path):
     #celeba_distill
@@ -330,7 +333,7 @@ def download_image(request):
         settings.BASE_DIR, f'static/{user_id}_proj_{count}.png')
     with open(processed_image_path, 'rb') as f:
         response = HttpResponse(f.read(), content_type="image/jpeg")
-        response['Content-Disposition'] = 'attachment; filename="processed_image.jpg"'
+        response['Content-Disposition'] = f'attachment; filename="{user_id}_create_img.jpg"'
         return response
     return render(request, 'detail.html', {'img': img, 'processed_image_path': processed_image_path})
 

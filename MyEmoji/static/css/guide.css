@@ -84,6 +84,8 @@ a {
 }
 
 .CreateWrap {
+    /* background-image: url("../img/GUIDE.png");
+    background-size: cover; */
     background-color: #dbdbdb;
     border-radius: 7px;
     width: 90%;
