@@ -135,6 +135,7 @@ body {
     /* width: calc(100vh - 35.75vh); */
     height: calc(100vh - 35.25vh);
     z-index: 2;
+    border: 1px solid #ccc;
 }
 
 .submit_btn {
