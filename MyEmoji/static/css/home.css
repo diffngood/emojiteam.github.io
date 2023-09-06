@@ -155,14 +155,15 @@ body {
 
 .home_container {
     margin: 0;
-    background-color: #eee;
+    padding: 80px 0;
+    background-color: #f5fcf5;
     /* background: linear-gradient(135deg, #4DB560, #4DB560); */
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    user-select: none;
-    height: 80vh;
+    user-select: none; */
+    height: 100%;
     color: #222;
 }
 
@@ -190,7 +191,7 @@ body {
 }
 
 .item_group {
-    width: 59%;
+    width: 100%;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
@@ -202,7 +203,7 @@ body {
     height: 50vh;
     background-position: center;
     background-size: 50vh;
-    margin: 0.3vw;
+    margin: 1vw;
     border-radius: 1.5vw;
     display: inline-block;
     background-position: center center;
@@ -258,4 +259,80 @@ body {
         font-size: 35px;
     }
 
+}
+
+
+/* 추가 */
+
+.home_h1 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1em;
+    margin: 0 3%;
+}
+
+
+/* hover styles */
+.location-listing {
+    position: relative;
+}
+
+.location-image {
+    line-height: 0;
+    overflow: hidden;
+}
+
+.location-image img {
+    filter: blur(0px);
+    transition: filter 0.3s ease-in;
+    border-radius: 15px;
+    border: 5px double gray;
+    /* transform: scale(1.1); */
+}
+
+.location-title {
+    font-size: 1.5em;
+    font-weight: 900;
+    text-decoration: none;
+    z-index: 1;
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .5s;
+    background: rgba(250, 194, 64, 0.3);
+    color: white;
+
+    /* position the text in t’ middle*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.location-listing:hover .location-title {
+    opacity: 1;
+    border-radius: 15px;
+}
+
+.location-listing:hover .location-image img {
+    filter: blur(2px);
+}
+
+
+/* for touch screen devices */
+@media (hover: none) {
+    .location-title {
+        opacity: 1;
+    }
+
+    .location-image img {
+        filter: blur(2px);
+    }
 }

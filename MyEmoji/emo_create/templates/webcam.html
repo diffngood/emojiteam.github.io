@@ -12,6 +12,7 @@ Webcam
 {% block content %}
 <div>
     <nav class="mainMenu">
+
         <ul class="create_item">
             <li><a href="/emo_create/">Guide</a></li>
             <li><a href="/emo_create/upload_img">Upload a image</a></li>
@@ -24,9 +25,25 @@ Webcam
                 <video id="video" autoplay></video>
             </div>
             <button class="capture_btn" onclick="captureImage()">캡쳐</button>
+            <button class="move_btn" onclick="location.href='/emo_create/upload_img'" style="display: inline-block;
+            padding: .5em .75em;
+            background-color: #fdfdfd;
+            color: #6a6a6a;
+            cursor: pointer;
+            border: 1px solid #cacaca;
+            border-radius: .25em;
+            height: 39.2px;
+            font-size: 16px;
+            margin: 0px 15px;">이동</button>
             <div>
                 <br>
-                서버에 저장된 이미지는 아래의 리스트를 통해 확인 가능합니다.
+                <h2>웹캠으로 이미지를 캡처하고 <br></h2>
+                <h2>이미지를 우클릭하여 저장하고 이동 버튼을 눌러주세요<h2>
+            </div>
+            <div>
+                {% for image in images %}
+                <img src="{{ image.image.url }}" width="200" height="150">
+                {% endfor %}
             </div>
             <div id="image_container">
                 <!-- 이미지를 렌더링할 태그 추가 -->
@@ -58,5 +75,6 @@ Webcam
         imageContainer.style.display = "block";
     }
 </script>
+
 <!-- https://zinee-world.tistory.com/551 -->
 {% endblock %}

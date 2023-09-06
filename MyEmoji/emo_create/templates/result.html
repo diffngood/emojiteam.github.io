@@ -22,10 +22,10 @@ Result
     <div id="canvas-container">
         <canvas id="canvas"></canvas>
         <div class="result_container">
-            <h1 style="z-index: 3; background-color: white; color: #156132;">{{ selected_style }} Style Result</h1>
+            <h1 style="z-index: 3; background-color: white; color: #156132;"> Style Result</h1>
             <div class="img_container">
                 <img src="../../static/{{ user_id }}_proj_{{ img_count }}.png" id="upload_img_view"
-                    style="height: 350px; width: 350px; margin-top: 20px;">
+                    style="height: 60%; margin-top: 10px;">
                 <br>
                 <a href="{% url 'download_image' %}" style="z-index: 3; margin-left: 116px;" id="download_btn" download>
                     <span>Download</span>
@@ -37,36 +37,37 @@ Result
                     <div class="card">
                         <h2 class="h2_result">Select a Text Color</h2>
                         <div class="inputGroup">
-                            <input id="one" name="radio" type="radio" value="k" checked />
-                            <label for="one">검정</label>
+                            <input id="one" name="radio" type="radio" class="result_font_color" value="k" checked />
+                            <label for="one">검정색&nbsp;&nbsp;(Black)</label>
 
                             <div class="check"></div>
                         </div>
                         <div class="inputGroup">
-                            <input id="two" name="radio" type="radio" value="w" />
-                            <label for="two">하양</label>
+                            <input id="two" name="radio" type="radio" class="result_font_color" value="w" />
+                            <label for="two">하얀색&nbsp;&nbsp;(White)</label>
 
                             <div class="check"></div>
                         </div>
                         <div class="inputGroup">
-                            <input id="radio3" name="radio" type="radio" value="r" />
-                            <label for="radio3">빨강</label>
+                            <input id="radio3" name="radio" type="radio" class="result_font_color" value="r" />
+                            <label for="radio3">빨간색&nbsp;&nbsp;(Red)</label>
                         </div>
                         <div class="inputGroup">
-                            <input id="radio4" name="radio" type="radio" value="b" />
-                            <label for="radio4">파랑</label>
+                            <input id="radio4" name="radio" type="radio" class="result_font_color" value="b" />
+                            <label for="radio4">파란색&nbsp;&nbsp;(Blue)</label>
                         </div>
                         <div class="inputGroup">
-                            <input id="radio5" name="radio" type="radio" value="g" />
-                            <label for="radio5">초록</label>
+                            <input id="radio5" name="radio" type="radio" class="result_font_color" value="g" />
+                            <label for="radio5">초록색&nbsp;&nbsp;(Green)</label>
                         </div>
                     </div>
-                    <input type="text" name="text" placeholder="텍스트 입력">
-                    <input class="create_btn" type="submit" value="텍스트 추가">
+                    <input type="text" name="text" class="result_text" placeholder="텍스트 입력">
+                    <input class="add_btn" type="submit" value="Add">
                 </form>
             </div>
         </div>
     </div>
+</div>
 
 </div>
 
