@@ -1,5 +1,6 @@
 import cv2
 import os
+from PIL import Image, ImageDraw, ImageFont
 from django.conf import settings
 from django.contrib import messages
 import run
@@ -365,3 +366,67 @@ def update_styled_image_data(user_id, png_path, png_path_count):
             logger.info(f"LOGGER: 마이 이모티콘꺼: {png_path}")
             sql = "UPDATE styled_images SET styled_image_path0 = %s WHERE user_id = %s"
             cursor.execute(sql, [png_path, user_id])
+
+# 글자 추가
+
+def add_text_to_image(request):
+    if request.method == 'POST':
+        text = request.POST.get('text', '')
+        color = request.POST.get('radio')
+    user_id = request.user.username
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "SELECT count FROM styled_images WHERE user_id = %s", [user_id])
+        count_tuple = cursor.fetchone()
+        count = count_tuple[0]
+        img_count = count - 1
+    img_path = f'static/{ user_id }_proj_{ img_count }.png'
+    img = Image.open(img_path)
+    w, h = img.size
+    font_path = os.path.join(
+            settings.BASE_DIR, 'ttfs', 'NanumSquareB.ttf')
+    
+    logger.info(f"LOGGER: 결과에서 텍스트 추가 text: {text}")
+    logger.info(f"LOGGER: 결과에서 텍스트 추가 img_path: {img_path}")
+    logger.info(f"LOGGER: 결과에서 텍스트 추가 font_path: {font_path}")
+
+    fontsize = ((w + h) //2 ) // 6
+    if len(text) >= 6:
+        text = text[:6]
+    elif len(text) == 2:
+        fontsize = ((w + h) //2 ) // 5
+        text = text[0] + " " * 7 + text[1]
+    elif len(text) == 3:
+        fontsize = ((w + h) //2 ) // 5
+        text = text[0] + " " * 2 + text[1] + " " * 2 + text[2]
+    elif len(text) == 4:
+        fontsize = ((w + h) //2 ) // 5
+        text = text[0] + " " * 1 + text[1] + " " * 1 + text[2]  + " " * 1 + text[3]
+    
+    fnt = ImageFont.truetype(font_path, fontsize, encoding="UTF-8")
+    if hasattr(fnt, "getsize_multiline"):
+        tw, th = fnt.getsize_multiline(text)
+    else:
+        tw, th = fnt.getsize(text)
+    draw = ImageDraw.Draw(img)
+    
+    text_x = int((w - tw) / 2)
+    text_y = h - th
+
+    if color == "r":
+        fill_color = "red"
+    elif color == "b":
+        fill_color = "blue"
+    elif color == "g":
+        fill_color = "green"
+    elif color == "w":
+        fill_color = "white"
+    elif color == "k":
+        fill_color = "black"
+    else:
+        fill_color = "black" 
+    
+    draw.text((text_x, text_y), text, font=fnt, fill=fill_color)
+    img.save(img_path)
+    #img.show()
+    return render(request, 'result.html', {'user_id': user_id, 'img_count': img_count})

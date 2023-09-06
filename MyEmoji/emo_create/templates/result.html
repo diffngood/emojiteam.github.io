@@ -31,6 +31,40 @@ Result
                     <span>Download</span>
                 </a>
             </div>
+            <div class="font_add">
+                <form method="post" action="{% url 'add_text_to_image' %}">
+                    {% csrf_token %}
+                    <div class="card">
+                        <h2 class="h2_result">Select a Text Color</h2>
+                        <div class="inputGroup">
+                            <input id="one" name="radio" type="radio" value="k" checked />
+                            <label for="one">검정</label>
+
+                            <div class="check"></div>
+                        </div>
+                        <div class="inputGroup">
+                            <input id="two" name="radio" type="radio" value="w" />
+                            <label for="two">하양</label>
+
+                            <div class="check"></div>
+                        </div>
+                        <div class="inputGroup">
+                            <input id="radio3" name="radio" type="radio" value="r" />
+                            <label for="radio3">빨강</label>
+                        </div>
+                        <div class="inputGroup">
+                            <input id="radio4" name="radio" type="radio" value="b" />
+                            <label for="radio4">파랑</label>
+                        </div>
+                        <div class="inputGroup">
+                            <input id="radio5" name="radio" type="radio" value="g" />
+                            <label for="radio5">초록</label>
+                        </div>
+                    </div>
+                    <input type="text" name="text" placeholder="텍스트 입력">
+                    <input class="create_btn" type="submit" value="텍스트 추가">
+                </form>
+            </div>
         </div>
     </div>
 

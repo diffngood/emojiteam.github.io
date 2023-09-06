@@ -13,4 +13,5 @@ urlpatterns = [
     path('process_style/', process_style, name='process_style'),
     path('download_image/', download_image, name='download_image'),
     path('loading/', loading, name='loading'),
+    path('add_text_to_image/', add_text_to_image, name='add_text_to_image'),
 ]

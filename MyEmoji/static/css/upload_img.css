@@ -278,3 +278,28 @@ body {
         color: white;
     }
 }
+
+.h2_result {
+    margin: 10px 0;
+    font-weight: 900;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    width: 300px;
+    padding: 20px 25px;
+    border-radius: 20px;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.13);
+    height: 300px;
+}
+
+label {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.inputGroup {
+    margin: 10px 0px;
+}
