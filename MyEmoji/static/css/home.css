@@ -307,7 +307,7 @@ body {
     left: 0;
     opacity: 0;
     transition: opacity .5s;
-    background: rgba(250, 194, 64, 0.3);
+    background: rgb(84 60 6 / 30%);
     color: white;
 
     /* position the text in t’ middle*/

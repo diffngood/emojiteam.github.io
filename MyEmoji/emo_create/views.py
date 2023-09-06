@@ -368,7 +368,6 @@ def update_styled_image_data(user_id, png_path, png_path_count):
             cursor.execute(sql, [png_path, user_id])
 
 # 글자 추가
-
 def add_text_to_image(request):
     if request.method == 'POST':
         text = request.POST.get('text', '')
@@ -411,7 +410,7 @@ def add_text_to_image(request):
     draw = ImageDraw.Draw(img)
     
     text_x = int((w - tw) / 2)
-    text_y = h - th
+    text_y = h - th - 25
 
     if color == "r":
         fill_color = "red"
@@ -428,5 +427,6 @@ def add_text_to_image(request):
     
     draw.text((text_x, text_y), text, font=fnt, fill=fill_color)
     img.save(img_path)
+    
     #img.show()
     return render(request, 'result.html', {'user_id': user_id, 'img_count': img_count})
