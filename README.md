@@ -49,15 +49,13 @@
   <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white" />
   <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" />
 </div>
-
+<!--
 <details>
   <summary><h4>Database Design</h4></summary>
-  
   DB 설계 추가예정
 </details>
-
 <br>
-
+-->
 <details>
   <summary><h4>Storyboard</h4></summary>
   [임시 스토리보드]
