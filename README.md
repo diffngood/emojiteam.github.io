@@ -1,5 +1,19 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=260&section=header&text=Create%20of%20My%20Own%20Emoji&fontSize=55&animation=fadeIn&fontAlignY=38&desc=나만의%20이모티콘%20생성&descAlignY=51&descAlign=65)
 
+### Intro
+
+<hr>
+
+   -  프로젝트명  : 나만의 이모티콘 생성 (Create of My Own Emoji)
+   -  개발인원    : 4명
+   -  개발환경    : Visual Studio Code
+   -  프레임워크  : Django Framework 4.2.5
+   -  개발언어    : Python, HTML, CSS, JavaScript
+   -  데이터베이스: MySQL 8.0.32
+   -  라이브러리  : OpenCV, Dlib
+ 
+<hr>
+
 ## 👥 Member 👥
 <h4>👧 고나연 (2018156001)</h4>
 <a href="https://github.com/ssedogdoom">
